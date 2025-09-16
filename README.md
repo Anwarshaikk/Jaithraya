@@ -61,7 +61,8 @@ src/
 ### Available Scripts
 
 - `npm run dev` - Start development server
-- `npm run build` - Build for production
+- `npm run build` - Build for production (static export)
+- `npm run build:export` - Build and export static files
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 
@@ -81,6 +82,36 @@ src/
 - Use Tailwind CSS for styling
 - Maintain component reusability
 - Write clean, readable code
+
+## 🚀 Deployment
+
+### GoDaddy Hosting (jaithraya.godaddysites.com)
+
+The application is configured for static export to work with GoDaddy hosting.
+
+#### Build for Production
+
+1. **Build the application**:
+   ```bash
+   npm run build
+   ```
+
+2. **Upload to GoDaddy**:
+   - The build creates an `out` folder with static files
+   - Upload the contents of the `out` folder to your GoDaddy hosting root directory
+   - Use GoDaddy's File Manager, FTP, or Website Builder
+
+#### Deployment Options
+
+- **GoDaddy Website Builder**: Upload files through their interface
+- **cPanel File Manager**: Upload to `public_html` directory
+- **FTP**: Use FTP client to upload to root directory
+
+#### Important Notes
+
+- Upload the **contents** of the `out` folder, not the folder itself
+- Ensure `index.html` is in the root directory
+- The site will be available at `https://jaithraya.godaddysites.com`
 
 ## 🤝 Contributing
 
