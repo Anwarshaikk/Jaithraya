@@ -4,6 +4,7 @@ import ProcessSection from '@/components/sections/ProcessSection';
 import SocialProofSection from '@/components/sections/SocialProofSection';
 import TechnologySection from '@/components/sections/TechnologySection';
 import FinalCTASection from '@/components/sections/FinalCTASection';
+import FloatingCTA from '@/components/ui/FloatingCTA';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <SocialProofSection />
       <TechnologySection />
       <FinalCTASection />
+      <FloatingCTA />
     </main>
   );
 }

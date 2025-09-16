@@ -16,6 +16,7 @@ export const NAVIGATION_ITEMS = [
 export const HERO_SECTION = {
   title: 'Stop Guessing. Start Growing.',
   subtitle: 'AI-Powered Solutions for Your Business.',
+  valueProposition: 'Tailored AI strategies that pay for themselves in months.',
   ctaText: 'Explore Our Solutions',
   ctaHref: '/#solutions',
 } as const;
@@ -77,8 +78,8 @@ export const PROCESS_SECTION = {
 } as const;
 
 export const SOCIAL_PROOF_SECTION = {
-  title: 'Trusted by Businesses',
-  subtitle: 'See what our clients have to say',
+  title: 'What Our Clients Say',
+  subtitle: 'Hear from businesses we\'ve helped transform',
   testimonials: [
     {
       id: 1,
@@ -86,6 +87,8 @@ export const SOCIAL_PROOF_SECTION = {
       author: "Sarah Johnson",
       company: "Metro Convenience Stores",
       role: "CEO",
+      avatar: "SJ",
+      initials: "SJ",
     },
     {
       id: 2,
@@ -93,6 +96,8 @@ export const SOCIAL_PROOF_SECTION = {
       author: "Michael Chen",
       company: "TechStart Solutions",
       role: "Founder",
+      avatar: "MC",
+      initials: "MC",
     },
     {
       id: 3,
@@ -100,8 +105,11 @@ export const SOCIAL_PROOF_SECTION = {
       author: "Emily Rodriguez",
       company: "Growth Marketing Co",
       role: "Marketing Director",
+      avatar: "ER",
+      initials: "ER",
     },
   ],
+  // Client logos - placeholder data until we have actual clients
   clientLogos: [
     { name: "Metro Convenience", placeholder: "MC" },
     { name: "TechStart Solutions", placeholder: "TS" },
