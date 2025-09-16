@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               href={item.href}
               className={cn(
                 'px-3 py-2 transition-colors',
-                item.isButton
+                'isButton' in item && item.isButton
                   ? 'bg-blue-600 text-white rounded-full hover:bg-blue-700'
                   : 'text-gray-600 hover:text-gray-800'
               )}
