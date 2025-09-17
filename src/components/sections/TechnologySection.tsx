@@ -60,11 +60,22 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
             <motion.div
               key={category.title}
               variants={itemVariants}
-              className="bg-gradient-to-br from-saffron-50 to-accent-50/40 rounded-lg p-8 shadow-lg border border-saffron-100/60"
+              whileHover={{ 
+                y: -8, 
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              className="bg-gradient-to-br from-saffron-50 to-accent-50/40 rounded-lg p-8 shadow-lg border border-saffron-100/60 hover:shadow-xl hover:shadow-saffron-100/20 transition-all duration-300 cursor-pointer"
             >
-              <h3 className="text-2xl font-semibold text-neutral-800 mb-8 text-center">
+              <motion.h3 
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.2, ease: "easeOut" }
+                }}
+                className="text-2xl font-semibold text-neutral-800 mb-8 text-center cursor-pointer"
+              >
                 {category.title}
-              </h3>
+              </motion.h3>
               <motion.div
                 className="space-y-4"
                 variants={{
@@ -75,6 +86,11 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
                   <motion.div
                     key={tech.name}
                     variants={itemVariants}
+                    whileHover={{ 
+                      scale: 1.02,
+                      x: 4,
+                      transition: { duration: 0.2, ease: "easeOut" }
+                    }}
                     className={cn(
                       "flex items-center justify-between p-4 rounded-lg group transition-all duration-300 border",
                       'isHighlighted' in tech && tech.isHighlighted 
@@ -90,10 +106,16 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
                         {tech.description}
                       </div>
                     </div>
-                    <div className={cn(
-                      "w-3 h-3 rounded-full transition-colors duration-300",
-                      'isHighlighted' in tech && tech.isHighlighted ? 'bg-accent-500' : 'bg-saffron-400 group-hover:bg-accent-500'
-                    )}></div>
+                    <motion.div 
+                      whileHover={{ 
+                        scale: 1.3,
+                        transition: { duration: 0.2, ease: "easeOut" }
+                      }}
+                      className={cn(
+                        "w-3 h-3 rounded-full transition-colors duration-300",
+                        'isHighlighted' in tech && tech.isHighlighted ? 'bg-accent-500' : 'bg-saffron-400 group-hover:bg-accent-500'
+                      )}
+                    ></motion.div>
                   </motion.div>
                 ))}
               </motion.div>
