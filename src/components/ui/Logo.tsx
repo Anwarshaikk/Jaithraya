@@ -5,12 +5,14 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   showText?: boolean;
+  showTagline?: boolean;
 }
 
 const Logo: React.FC<LogoProps> = ({ 
   size = 'md', 
   className,
-  showText = false 
+  showText = false,
+  showTagline = false
 }) => {
   const sizeClasses = {
     sm: 'w-6 h-6',
@@ -24,6 +26,12 @@ const Logo: React.FC<LogoProps> = ({
     lg: 'text-lg'
   };
 
+  const taglineSizeClasses = {
+    sm: 'text-xs',
+    md: 'text-sm',
+    lg: 'text-base'
+  };
+
   const iconSize = {
     sm: 12,
     md: 16,
@@ -31,10 +39,10 @@ const Logo: React.FC<LogoProps> = ({
   };
 
   return (
-    <div className={cn('flex items-center space-x-2', className)}>
-      {/* Logo Icon */}
+    <div className={cn('flex items-center space-x-3 group cursor-pointer', className)}>
+      {/* Logo Icon - Boxed J with gradient */}
       <div className={cn(
-        'flex items-center justify-center rounded-md bg-saffron-500 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-105',
+        'flex items-center justify-center rounded-md bg-gradient-to-br from-saffron-400 via-saffron-500 to-teal-400 shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:scale-110',
         sizeClasses[size]
       )}>
         <svg 
@@ -48,9 +56,9 @@ const Logo: React.FC<LogoProps> = ({
           <rect width="32" height="32" rx="6" fill="currentColor" className="text-saffron-500" />
           <text 
             x="16" 
-            y="22" 
+            y="26" 
             fontFamily="Arial, sans-serif" 
-            fontSize="18" 
+            fontSize="22" 
             fontWeight="bold" 
             textAnchor="middle" 
             fill="white"
@@ -60,14 +68,29 @@ const Logo: React.FC<LogoProps> = ({
         </svg>
       </div>
       
-      {/* Optional Text */}
-      {showText && (
-        <span className={cn(
-          'font-bold text-charcoal-900',
-          textSizeClasses[size]
-        )}>
-          Jaithraya
-        </span>
+      {/* Company Name and Tagline */}
+      {(showText || showTagline) && (
+        <div className="flex flex-col">
+          {/* Company Name */}
+          {showText && (
+            <span className={cn(
+              'font-bold text-charcoal-900 group-hover:text-saffron-500 transition-colors duration-300',
+              textSizeClasses[size]
+            )}>
+              Jaithraya
+            </span>
+          )}
+          
+          {/* Tagline */}
+          {showTagline && (
+            <span className={cn(
+              'text-saffron-500 group-hover:text-charcoal-900 transition-colors duration-300',
+              taglineSizeClasses[size]
+            )}>
+              AI-Driven Business Automation
+            </span>
+          )}
+        </div>
       )}
     </div>
   );

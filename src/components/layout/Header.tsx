@@ -14,17 +14,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             href="/" 
             className="group relative overflow-hidden rounded-lg px-2 py-1 -mx-2 -my-1 transition-all duration-300 hover:bg-gradient-to-r hover:from-saffron-50 hover:to-accent-50 hover:shadow-md"
           >
-            <div className="flex items-center space-x-3">
-              <Logo size="md" className="group-hover:scale-105 transition-transform duration-300" />
-              <div className="flex flex-col">
-                <div className="text-2xl font-bold text-charcoal-900 group-hover:text-saffron-600 transition-all duration-300 group-hover:scale-105 transform">
-                  {APP_CONFIG.name}
-                </div>
-                <div className="text-sm text-saffron-600 font-medium hidden sm:block group-hover:text-saffron-700 group-hover:font-semibold transition-all duration-300">
-                  AI-Driven Business Automation
-                </div>
-              </div>
-            </div>
+            <Logo 
+              size="lg" 
+              showText={true} 
+              showTagline={true}
+              className="group-hover:scale-105 transition-transform duration-300"
+            />
             {/* Subtle background effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-saffron-100 to-accent-100 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg"></div>
           </Link>
