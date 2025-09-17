@@ -8,8 +8,8 @@ export const APP_CONFIG = {
 
 export const NAVIGATION_ITEMS = [
   { label: 'Solutions', href: '/#solutions' },
+  { label: 'About', href: '/#about' },
   { label: 'Our Process', href: '/#process' },
-  { label: 'About', href: '/about' },
   { label: 'Contact Us', href: '/contact', isButton: true },
 ] as const;
 
@@ -227,4 +227,75 @@ export const PRICING_SECTION = {
       popular: false,
     },
   ],
+} as const;
+
+export const ABOUT_SECTION = {
+  hero: {
+    title: 'Meet Anwar - The Data Scientist Behind Jaithraya',
+    subtitle: 'From University of New Haven to transforming businesses worldwide with AI',
+  },
+  brandStory: {
+    title: 'Why Jaithraya?',
+    subtitle: 'The Meaning Behind Our Name',
+    content: 'Jaithraya is an AI-driven solutions company dedicated to helping small and medium-sized businesses thrive through intelligent automation and data-driven insight. Our name comes from the Sanskrit word Jaithraya, meaning "threefold victory"—body, mind, and spirit—reflecting our belief that true success balances technology, people, and purpose.',
+    description: 'We partner with convenience stores, smoke shops, restaurants, cleaning services, and other service-oriented companies to streamline operations and unlock new opportunities. From AI integration and business-process optimization to scalable cloud infrastructure, we deliver automation that reduces manual work, surfaces actionable insights, and drives measurable growth.',
+    philosophy: 'Rooted in innovation, cultural respect, and genuine client partnership, Jaithraya builds solutions that honor tradition while embracing the future. Whether you\'re looking to automate everyday tasks, gain real-time analytics, or modernize your technology stack, our team is ready to guide you toward lasting transformation.',
+  },
+  founder: {
+    title: 'Meet Anwar - The Visionary Behind Jaithraya',
+    subtitle: 'My Journey: Infosys → Masters → AI Startup',
+    story: 'After gaining valuable corporate experience as a Systems Engineer at Infosys, I pursued my Masters in Data Science from University of New Haven to deepen my AI expertise. During my studies, I realized how AI could transform small businesses—the same way it had revolutionized large corporations.',
+    location: 'Based in West Haven, CT, I serve clients globally, combining corporate experience, academic knowledge, and entrepreneurial spirit to help businesses achieve their threefold victory.',
+    values: [
+      {
+        title: 'Integrity',
+        description: 'I deliver exactly what I promise, when I promise it'
+      },
+      {
+        title: 'Innovation', 
+        description: 'I constantly explore new ways to solve business problems with AI'
+      },
+      {
+        title: 'Client Growth',
+        description: 'Your success is my success - I measure my worth by your results'
+      }
+    ],
+    quote: 'AI made problem-solving easy for me, and I want to make it easy for you too. I started Jaithraya to bridge the gap between corporate AI and small business needs, helping every business achieve victory across all three dimensions of success.',
+    quoteAuthor: 'Anwar Rashid Shaik, Founder & CEO'
+  },
+  approach: {
+    title: 'Our Threefold Victory Approach',
+    subtitle: 'Just as our name suggests victory across three realms, we help businesses win in three key areas:',
+    tiers: [
+      {
+        icon: '🌐',
+        title: 'Digital Foundation',
+        description: 'We start by building your professional online presence with modern websites and essential digital tools.'
+      },
+      {
+        icon: '⚡',
+        title: 'Smart Automation',
+        description: 'We automate your repetitive tasks and implement AI-powered tools to save you time and increase efficiency.'
+      },
+      {
+        icon: '🚀',
+        title: 'Growth & Intelligence',
+        description: 'We use your data to create custom AI solutions that predict trends and drive sustainable growth.'
+      }
+    ]
+  },
+  contact: {
+    title: 'Ready to Achieve Your Threefold Victory?',
+    subtitle: 'Discover how Jaithraya can help your business achieve its own threefold victory—connect with us today to explore the possibilities.',
+    details: {
+      phone: '203-710-0790',
+      email: 'anwarrashidshaik@jaithraya.com',
+      location: 'West Haven, CT (Serving Globally)'
+    },
+    cta: {
+      text: 'Schedule Your Free Consultation',
+      description: 'Free 30-minute consultation • Custom business assessment • No commitment required',
+      href: '/contact'
+    }
+  }
 } as const;

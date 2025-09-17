@@ -54,7 +54,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
         className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-accent-200/40 to-transparent rounded-full translate-y-40 -translate-x-40 blur-2xl"
       ></motion.div>
       
-      <div className="container mx-auto px-6 py-32 text-center relative z-10">
+      <div className="container mx-auto px-6 py-32 pb-40 text-center relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -74,7 +74,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
           </motion.p>
           <motion.p
             variants={itemVariants}
-            className="text-lg text-charcoal-600 mb-8 max-w-2xl mx-auto"
+            className="text-lg text-charcoal-600 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
             {HERO_SECTION.valueProposition}
           </motion.p>

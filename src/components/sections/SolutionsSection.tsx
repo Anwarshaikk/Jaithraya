@@ -34,7 +34,7 @@ const SolutionsSection = () => {
   };
 
   return (
-    <section id="solutions" className="py-20 bg-neutral-50 border-t border-saffron-100">
+    <section id="solutions" className="py-24 bg-neutral-50 border-t border-saffron-100">
       <div className="container mx-auto px-6 text-center">
         <motion.h2
           className="text-4xl font-bold text-neutral-800 mb-12"
@@ -73,7 +73,7 @@ const SolutionsSection = () => {
                     <h3 className="text-2xl font-bold text-charcoal-800 mb-4 group-hover:text-accent-600 transition-colors duration-300">
                       {card.title}
                     </h3>
-                    <p className="text-charcoal-600 group-hover:text-charcoal-700 transition-colors duration-300">
+                    <p className="text-charcoal-600 group-hover:text-charcoal-700 transition-colors duration-300 leading-relaxed">
                       {card.description}
                     </p>
                     <div className="absolute top-4 right-4 text-neutral-400 group-hover:text-accent-500 transition-all duration-300 opacity-0 group-hover:opacity-100 -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0">

@@ -14,13 +14,13 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ className }) => {
   const { ref, isInView } = useScrollAnimation();
 
   return (
-    <section id="process" className={cn('py-20 bg-gradient-to-br from-neutral-50 to-saffron-50 border-t border-saffron-100', className)}>
+    <section id="process" className={cn('py-24 bg-gradient-to-br from-neutral-50 to-saffron-50 border-t border-saffron-100', className)}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-neutral-800 mb-4">
             {PROCESS_SECTION.title}
           </h2>
-          <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-xl text-neutral-600 max-w-2xl mx-auto leading-relaxed">
             {PROCESS_SECTION.subtitle}
           </p>
         </div>

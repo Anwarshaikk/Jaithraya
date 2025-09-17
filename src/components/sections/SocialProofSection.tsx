@@ -36,14 +36,14 @@ const SocialProofSection: React.FC<SocialProofSectionProps> = ({ className }) =>
   };
 
   return (
-    <section className={cn('py-20 bg-gradient-to-br from-neutral-50 to-saffron-50 border-t border-saffron-100', className)}>
+    <section className={cn('py-24 bg-gradient-to-br from-neutral-50 to-saffron-50 border-t border-saffron-100', className)}>
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-neutral-800 mb-4">
             {SOCIAL_PROOF_SECTION.title}
           </h2>
-          <p className="text-xl text-neutral-600">
+          <p className="text-xl text-neutral-600 leading-relaxed">
             {SOCIAL_PROOF_SECTION.subtitle}
           </p>
         </div>

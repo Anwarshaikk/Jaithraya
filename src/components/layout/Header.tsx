@@ -8,9 +8,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   return (
     <header className={cn('sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-md transition-all duration-300', className)}>
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-charcoal-900">
+        <div className="flex flex-col">
           <Link href="/" className="hover:text-saffron-600 transition-colors duration-300">
-            {APP_CONFIG.name}
+            <div className="text-2xl font-bold text-charcoal-900">{APP_CONFIG.name}</div>
+            <div className="text-sm text-saffron-600 font-medium hidden sm:block">AI-Driven Business Automation</div>
           </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-1">

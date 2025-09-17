@@ -1,0 +1,16 @@
+{
+  "name": "Jaithraya - AI-Powered Business Solutions",
+  "short_name": "Jaithraya",
+  "description": "Transform Your Business with AI - Professional websites, smart automation, and AI-powered growth strategies.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#F59E0B",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -4,7 +4,7 @@ import { FINAL_CTA_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
 import { motion, Variants } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
 
 interface FinalCTASectionProps {
   className?: string;
@@ -60,6 +60,22 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
                 <span className="text-charcoal-700 font-medium">{feature}</span>
               </div>
             ))}
+          </motion.div>
+
+          {/* Contact Information */}
+          <motion.div variants={itemVariants} className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="flex items-center justify-center space-x-3 bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-md border border-saffron-100">
+              <Phone className="w-6 h-6 text-saffron-600" />
+              <span className="text-charcoal-800 font-medium">203-710-0790</span>
+            </div>
+            <div className="flex items-center justify-center space-x-3 bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-md border border-saffron-100">
+              <Mail className="w-6 h-6 text-saffron-600" />
+              <span className="text-charcoal-800 font-medium">anwarrashidshaik@jaithraya.com</span>
+            </div>
+            <div className="flex items-center justify-center space-x-3 bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-md border border-saffron-100">
+              <MapPin className="w-6 h-6 text-saffron-600" />
+              <span className="text-charcoal-800 font-medium">West Haven, CT (Serving Globally)</span>
+            </div>
           </motion.div>
 
           {/* CTA Button */}
