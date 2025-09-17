@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { motion, Variants } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
+import { useConsultation } from '@/contexts/ConsultationContext';
 
 interface FinalCTASectionProps {
   className?: string;
@@ -12,6 +13,7 @@ interface FinalCTASectionProps {
 
 const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
   const { ref, isInView } = useScrollAnimation();
+  const { openModal } = useConsultation();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -80,13 +82,13 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
 
           {/* CTA Button */}
           <motion.div variants={itemVariants} className="space-y-6">
-            <a
-              href={FINAL_CTA_SECTION.ctaHref}
+            <button
+              onClick={openModal}
               className="group bg-saffron-500 text-white rounded-full px-8 py-4 text-lg font-semibold hover:bg-saffron-600 transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-xl"
             >
               Get Free Consultation
               <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </button>
             
             {/* Features List */}
             <div className="flex flex-wrap justify-center items-center gap-2 text-charcoal-600 text-sm">

@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Quote, CheckCircle2, ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { useConsultation } from '@/contexts/ConsultationContext';
 
 interface AboutSectionProps {
   className?: string;
@@ -14,6 +15,7 @@ interface AboutSectionProps {
 
 const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
   const { ref, isInView } = useScrollAnimation();
+  const { openModal } = useConsultation();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -189,7 +191,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
           {/* CTA Button */}
           <motion.div variants={itemVariants} className="text-center space-y-6">
             <Button
-              href={ABOUT_SECTION.contact.cta.href}
+              onClick={openModal}
               size="lg"
               className="group shadow-lg hover:shadow-xl px-8 py-4 text-lg"
             >

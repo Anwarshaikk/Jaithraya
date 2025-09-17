@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import { APP_CONFIG } from "@/constants";
+import { ConsultationProvider } from "@/contexts/ConsultationContext";
+import ConsultationWrapper from "@/components/ConsultationWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,8 +35,11 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={inter.className}>
-        <Header />
-        {children}
+        <ConsultationProvider>
+          <Header />
+          {children}
+          <ConsultationWrapper />
+        </ConsultationProvider>
       </body>
     </html>
   );

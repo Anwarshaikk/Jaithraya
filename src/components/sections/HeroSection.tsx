@@ -1,16 +1,18 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
 import { HERO_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useConsultation } from '@/contexts/ConsultationContext';
 
 interface HeroSectionProps {
   className?: string;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
+  const { openModal } = useConsultation();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -79,13 +81,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
             {HERO_SECTION.valueProposition}
           </motion.p>
           <motion.div variants={itemVariants} className="mt-8">
-            <Link
-              href={HERO_SECTION.ctaHref}
+            <button
+              onClick={openModal}
               className="group bg-saffron-500 text-white rounded-full px-8 py-4 text-lg font-semibold hover:bg-saffron-600 transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-xl"
             >
               Get Free Consultation
               <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            </button>
           </motion.div>
         </motion.div>
       </div>

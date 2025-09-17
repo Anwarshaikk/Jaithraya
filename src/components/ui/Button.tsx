@@ -7,6 +7,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,14 +16,15 @@ const Button: React.FC<ButtonProps> = ({
   href,
   className,
   children,
+  onClick,
   ...props
 }) => {
-  const baseClasses = 'font-semibold rounded-full transition duration-300 inline-block text-center';
+  const baseClasses = 'font-semibold rounded-full transition duration-300 inline-flex items-center justify-center';
   
   const variantClasses = {
-    primary: 'bg-saffron-500 text-white hover:bg-saffron-600 hover:scale-105',
+    primary: 'bg-gradient-to-r from-saffron-400 via-saffron-500 to-teal-400 text-white hover:from-saffron-500 hover:via-saffron-600 hover:to-teal-500 hover:scale-105 shadow-md hover:shadow-lg',
     secondary: 'bg-charcoal-600 text-white hover:bg-charcoal-700 hover:scale-105',
-    outline: 'border-2 border-accent-500 text-accent-500 hover:bg-accent-500 hover:text-white hover:scale-105',
+    outline: 'border-2 border-saffron-400 text-saffron-600 hover:bg-gradient-to-r hover:from-saffron-400 hover:to-teal-400 hover:text-white hover:scale-105',
   };
   
   const sizeClasses = {
@@ -47,7 +49,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} onClick={onClick} {...props}>
       {children}
     </button>
   );
