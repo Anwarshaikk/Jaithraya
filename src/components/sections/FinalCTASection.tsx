@@ -2,7 +2,7 @@
 import React from 'react';
 import { FINAL_CTA_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
@@ -21,9 +21,9 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
   return (

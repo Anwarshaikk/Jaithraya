@@ -34,7 +34,7 @@ const FloatingCTA: React.FC<FloatingCTAProps> = ({ className }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.5 }}
           className={cn('fixed bottom-6 right-6 z-40', className)}
         >
           <Link

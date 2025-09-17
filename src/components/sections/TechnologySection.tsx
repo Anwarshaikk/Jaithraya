@@ -22,7 +22,7 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30, scale: 0.98 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6 } },
   };
 
   return (
@@ -33,7 +33,7 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
           <motion.h2 
             initial={{ opacity: 0, y: -20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: 'circOut' }}
+            transition={{ duration: 0.7 }}
             className="text-4xl font-bold text-neutral-800 mb-4"
           >
             {TECHNOLOGY_SECTION.title}
@@ -41,7 +41,7 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
           <motion.p 
             initial={{ opacity: 0, y: -20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: 'circOut', delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             className="text-xl text-neutral-600"
           >
             {TECHNOLOGY_SECTION.subtitle}
@@ -77,7 +77,7 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
                     variants={itemVariants}
                     className={cn(
                       "flex items-center justify-between p-4 rounded-lg group transition-all duration-300 border",
-                      tech.isHighlighted 
+                      'isHighlighted' in tech && tech.isHighlighted 
                         ? 'bg-saffron-50 border-saffron-200' 
                         : 'bg-neutral-50 border-neutral-200/80 group-hover:border-saffron-200 group-hover:bg-saffron-50'
                     )}
@@ -92,7 +92,7 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
                     </div>
                     <div className={cn(
                       "w-3 h-3 rounded-full transition-colors duration-300",
-                      tech.isHighlighted ? 'bg-accent-500' : 'bg-saffron-400 group-hover:bg-accent-500'
+                      'isHighlighted' in tech && tech.isHighlighted ? 'bg-accent-500' : 'bg-saffron-400 group-hover:bg-accent-500'
                     )}></div>
                   </motion.div>
                 ))}

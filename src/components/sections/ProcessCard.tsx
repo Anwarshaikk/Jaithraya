@@ -21,7 +21,6 @@ const ProcessCard = ({ step }: ProcessCardProps) => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.43, 0.13, 0.23, 0.96],
         staggerChildren: 0.2,
       },
     },
@@ -29,7 +28,7 @@ const ProcessCard = ({ step }: ProcessCardProps) => {
 
   const childVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (

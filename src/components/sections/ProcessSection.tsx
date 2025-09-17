@@ -32,7 +32,7 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ className }) => {
               className="h-full bg-gradient-to-r from-saffron-300 to-accent-300"
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : {}}
-              transition={{ duration: 1, ease: 'easeInOut' }}
+              transition={{ duration: 1 }}
               style={{ transformOrigin: 'left' }}
             />
                 </div>

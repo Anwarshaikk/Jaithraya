@@ -29,7 +29,6 @@ const SolutionsSection = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
       },
     },
   };
@@ -41,7 +40,7 @@ const SolutionsSection = () => {
           className="text-4xl font-bold text-neutral-800 mb-12"
           initial={{ opacity: 0, y: -30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: 'circOut' }}
+          transition={{ duration: 0.7 }}
         >
           {SOLUTIONS_SECTION.title}
         </motion.h2>
