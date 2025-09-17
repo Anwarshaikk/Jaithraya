@@ -8,7 +8,7 @@ export const APP_CONFIG = {
 
 export const NAVIGATION_ITEMS = [
   { label: 'Solutions', href: '/#solutions' },
-  { label: 'About', href: '/#about' },
+  { label: 'About', href: '/about' },
   { label: 'Our Process', href: '/#process' },
   { label: 'Contact Us', href: '/contact', isButton: true },
 ] as const;

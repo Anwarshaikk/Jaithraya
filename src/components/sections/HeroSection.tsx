@@ -83,7 +83,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
               href={HERO_SECTION.ctaHref}
               className="group bg-saffron-500 text-white rounded-full px-8 py-4 text-lg font-semibold hover:bg-saffron-600 transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-xl"
             >
-              {HERO_SECTION.ctaText}
+              Get Free Consultation
               <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </motion.div>

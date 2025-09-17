@@ -79,17 +79,32 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
           </motion.div>
 
           {/* CTA Button */}
-          <motion.div variants={itemVariants} className="space-y-4">
+          <motion.div variants={itemVariants} className="space-y-6">
             <a
               href={FINAL_CTA_SECTION.ctaHref}
-              className="group bg-saffron-500 text-white rounded-full px-12 py-4 text-xl font-semibold hover:bg-saffron-600 transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-xl"
+              className="group bg-saffron-500 text-white rounded-full px-8 py-4 text-lg font-semibold hover:bg-saffron-600 transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-xl"
             >
-              {FINAL_CTA_SECTION.ctaText}
-              <ArrowRight className="ml-3 h-6 w-6 transform transition-transform duration-300 group-hover:translate-x-1" />
+              Get Free Consultation
+              <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
             </a>
-            <p className="text-charcoal-600 text-sm">
-              No spam. No sales pitch. Just honest advice.
-            </p>
+            
+            {/* Features List */}
+            <div className="flex flex-wrap justify-center items-center gap-2 text-charcoal-600 text-sm">
+              <span className="flex items-center">
+                <CheckCircle2 className="w-4 h-4 text-accent-500 mr-1" />
+                Free 30-minute consultation
+              </span>
+              <span className="text-charcoal-400">•</span>
+              <span className="flex items-center">
+                <CheckCircle2 className="w-4 h-4 text-accent-500 mr-1" />
+                Custom business assessment
+              </span>
+              <span className="text-charcoal-400">•</span>
+              <span className="flex items-center">
+                <CheckCircle2 className="w-4 h-4 text-accent-500 mr-1" />
+                No commitment required
+              </span>
+            </div>
           </motion.div>
         </motion.div>
       </div>
