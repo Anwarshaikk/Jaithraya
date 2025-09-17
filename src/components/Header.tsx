@@ -48,7 +48,7 @@ const Header = () => {
               href={item.href}
               className={cn(
                 'px-4 py-2 transition-all duration-300 rounded-full',
-                item.isButton
+                'isButton' in item && item.isButton
                   ? 'bg-saffron-500 text-white hover:bg-saffron-600 shadow-sm'
                   : 'text-neutral-600 hover:bg-saffron-50 hover:text-neutral-900'
               )}
@@ -78,7 +78,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className={cn(
                   'px-4 py-2 transition-all duration-300 rounded-full text-center',
-                  item.isButton
+                  'isButton' in item && item.isButton
                     ? 'bg-saffron-500 text-white hover:bg-saffron-600 shadow-sm'
                     : 'text-neutral-600 hover:bg-saffron-50 hover:text-neutral-900'
                 )}
