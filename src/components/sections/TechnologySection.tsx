@@ -1,40 +1,86 @@
+'use client';
 import React from 'react';
 import { TECHNOLOGY_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface TechnologySectionProps {
   className?: string;
 }
 
 const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
+  const { ref, isInView } = useScrollAnimation();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.98 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } },
+  };
+
   return (
-    <section className={cn('py-20 bg-white', className)}>
+    <section className={cn('py-20 bg-neutral-50 border-t border-saffron-100', className)}>
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-neutral-800 mb-4">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: 'circOut' }}
+            className="text-4xl font-bold text-neutral-800 mb-4"
+          >
             {TECHNOLOGY_SECTION.title}
-          </h2>
-          <p className="text-xl text-neutral-600">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: -20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: 'circOut', delay: 0.2 }}
+            className="text-xl text-neutral-600"
+          >
             {TECHNOLOGY_SECTION.subtitle}
-          </p>
+          </motion.p>
         </div>
 
         {/* Technology Categories */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {TECHNOLOGY_SECTION.categories.map((category, categoryIndex) => (
-            <div
+        <motion.div
+          ref={ref}
+          className="grid md:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
+          {TECHNOLOGY_SECTION.categories.map((category) => (
+            <motion.div
               key={category.title}
-              className="bg-gradient-to-br from-saffron-50 to-complementary-50 rounded-lg p-8 hover:shadow-lg transition-all duration-300 hover:scale-105 border border-saffron-100"
+              variants={itemVariants}
+              className="bg-gradient-to-br from-saffron-50 to-accent-50/40 rounded-lg p-8 shadow-lg border border-saffron-100/60"
             >
-              <h3 className="text-2xl font-semibold text-neutral-800 mb-6 text-center">
+              <h3 className="text-2xl font-semibold text-neutral-800 mb-8 text-center">
                 {category.title}
               </h3>
-              <div className="space-y-4">
-                {category.technologies.map((tech, techIndex) => (
-                  <div
+              <motion.div
+                className="space-y-4"
+                variants={{
+                  visible: { transition: { staggerChildren: 0.1 } },
+                }}
+              >
+                {category.technologies.map((tech) => (
+                  <motion.div
                     key={tech.name}
-                    className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 border border-saffron-100"
+                    variants={itemVariants}
+                    className={cn(
+                      "flex items-center justify-between p-4 rounded-lg group transition-all duration-300 border",
+                      tech.isHighlighted 
+                        ? 'bg-saffron-50 border-saffron-200' 
+                        : 'bg-neutral-50 border-neutral-200/80 group-hover:border-saffron-200 group-hover:bg-saffron-50'
+                    )}
                   >
                     <div>
                       <div className="font-semibold text-neutral-800">
@@ -44,26 +90,16 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
                         {tech.description}
                       </div>
                     </div>
-                    <div className="w-3 h-3 bg-saffron-500 rounded-full"></div>
-                  </div>
+                    <div className={cn(
+                      "w-3 h-3 rounded-full transition-colors duration-300",
+                      tech.isHighlighted ? 'bg-accent-500' : 'bg-saffron-400 group-hover:bg-accent-500'
+                    )}></div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-neutral-600 mb-6">
-            Ready to leverage these technologies for your business?
-          </p>
-          <a
-            href="/contact"
-            className="bg-saffron-500 text-white rounded-full px-8 py-3 font-semibold hover:bg-saffron-600 transition duration-300 inline-block shadow-lg hover:shadow-xl"
-          >
-            Start Your Project
-          </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

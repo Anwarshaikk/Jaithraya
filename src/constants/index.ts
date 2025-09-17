@@ -2,151 +2,164 @@
 
 export const APP_CONFIG = {
   name: 'Jaithraya',
-  tagline: 'AI-Powered Solutions for Your Business',
-  description: 'Stop Guessing. Start Growing.',
+  tagline: 'AI-Powered Business Solutions',
+  description: 'Transform Your Business with AI',
 } as const;
 
 export const NAVIGATION_ITEMS = [
-  { label: 'C-Store Solutions', href: '/solutions/c-stores' },
-  { label: 'Online Businesses', href: '/solutions/online-businesses' },
+  { label: 'Solutions', href: '/#solutions' },
+  { label: 'Our Process', href: '/#process' },
   { label: 'About', href: '/about' },
   { label: 'Contact Us', href: '/contact', isButton: true },
 ] as const;
 
 export const HERO_SECTION = {
-  title: 'Stop Guessing. Start Growing.',
-  subtitle: 'AI-Powered Solutions for Your Business.',
-  valueProposition: 'Tailored AI strategies that pay for themselves in months.',
-  ctaText: 'Explore Our Solutions',
-  ctaHref: '/#solutions',
+  title: 'Transform Your Business with AI',
+  subtitle: 'Professional websites, smart automation, and AI-powered growth strategies.',
+  valueProposition: 'From local service businesses to retail stores - we help you compete and win in the digital age.',
+  ctaText: 'Get Your Free Consultation',
+  ctaHref: '/contact',
 } as const;
 
 export const SOLUTIONS_SECTION = {
-  title: 'Who We Help',
+  title: 'Complete Business Solutions',
   solutionCards: [
     {
-      title: 'C-Stores & Retailers',
-      description: 'Boost in-store sales, automate inventory, and build customer loyalty with AI-powered tools designed for retail environments.',
-      href: '/solutions/c-stores',
+      title: 'Professional Websites',
+      description: 'Modern, mobile-first websites that convert visitors into customers. Perfect for service businesses, retail stores, and local companies.',
+      href: '/solutions/websites',
+      features: ['Mobile-optimized design', 'SEO-ready', 'Fast loading', 'Easy to manage'],
     },
     {
-      title: 'Online & Service Businesses',
-      description: 'Scale your expertise, automate your lead flow, and streamline client management to grow your business without the burnout.',
-      href: '/solutions/online-businesses',
+      title: 'Business Automation',
+      description: 'Streamline operations with AI-powered tools for inventory, customer management, and marketing automation.',
+      href: '/solutions/automation',
+      features: ['Inventory management', 'Customer loyalty programs', 'Automated marketing', 'Sales reporting'],
+    },
+    {
+      title: 'AI-Powered Growth',
+      description: 'Custom AI solutions that analyze your data to predict trends, optimize pricing, and drive revenue growth.',
+      href: '/solutions/ai-growth',
+      features: ['Predictive analytics', 'Smart recommendations', 'Customer insights', 'Revenue optimization'],
     },
   ],
 };
 
 export const BUSINESS_SOLUTIONS = [
   {
-    id: 'c-stores',
-    title: 'C-Store Solutions',
-    description: 'AI-powered solutions for convenience stores',
-    href: '/solutions/c-stores',
+    id: 'websites',
+    title: 'Professional Websites',
+    description: 'Modern websites that convert',
+    href: '/solutions/websites',
   },
   {
-    id: 'online-businesses',
-    title: 'Online Businesses',
-    description: 'Digital solutions for online businesses',
-    href: '/solutions/online-businesses',
+    id: 'automation',
+    title: 'Business Automation',
+    description: 'Streamline your operations',
+    href: '/solutions/automation',
+  },
+  {
+    id: 'ai-growth',
+    title: 'AI-Powered Growth',
+    description: 'Data-driven business growth',
+    href: '/solutions/ai-growth',
   },
 ] as const;
 
 export const PROCESS_SECTION = {
-  title: 'Our Process',
-  subtitle: 'A proven methodology for business transformation',
+  title: 'How We Transform Your Business',
+  subtitle: 'A proven 3-step process that delivers results',
   steps: [
     {
       number: '01',
-      title: 'Foundation & Automation',
-      description: 'We begin by digitizing your core processes to create a solid data foundation that powers everything else.',
-      icon: '🏗️',
+      title: 'Digital Foundation',
+      description: 'We start by building your professional online presence with a modern website and essential digital tools.',
+      icon: '🌐',
     },
     {
       number: '02',
-      title: 'AI-Powered Growth',
-      description: 'We leverage that foundation to implement AI tools for sales, marketing, and customer intelligence.',
-      icon: '🤖',
+      title: 'Smart Automation',
+      description: 'We automate your repetitive tasks and implement AI-powered tools to save you time and increase efficiency.',
+      icon: '⚡',
     },
     {
       number: '03',
-      title: 'Strategic Transformation',
-      description: 'We develop custom AI solutions for your unique challenges to create a competitive advantage.',
+      title: 'Growth & Intelligence',
+      description: 'We use your data to create custom AI solutions that predict trends and drive sustainable growth.',
       icon: '🚀',
     },
   ],
 } as const;
 
 export const SOCIAL_PROOF_SECTION = {
-  title: 'What Our Clients Say',
-  subtitle: 'Hear from businesses we\'ve helped transform',
+  title: 'Success Stories',
+  subtitle: 'Real results from real businesses',
   testimonials: [
     {
       id: 1,
-      quote: "Jaithraya transformed our retail operations with AI. Our sales increased by 40% in just 3 months.",
-      author: "Sarah Johnson",
-      company: "Metro Convenience Stores",
-      role: "CEO",
-      avatar: "SJ",
-      initials: "SJ",
+      quote: "Our new website increased online bookings by 300% in just 2 months. Jaithraya delivered exactly what we needed.",
+      author: "Maria Santos",
+      company: "Elite Cleaning Services",
+      role: "Owner",
+      avatar: "MS",
+      initials: "MS",
     },
     {
       id: 2,
-      quote: "The custom AI solution they built for our online business has been a game-changer. Highly recommended!",
-      author: "Michael Chen",
-      company: "TechStart Solutions",
-      role: "Founder",
-      avatar: "MC",
-      initials: "MC",
+      quote: "The AI inventory system they built for our convenience store increased our profit margins by 25%.",
+      author: "David Kim",
+      company: "QuickMart Stores",
+      role: "Manager",
+      avatar: "DK",
+      initials: "DK",
     },
     {
       id: 3,
-      quote: "Professional, innovative, and results-driven. They delivered exactly what they promised.",
-      author: "Emily Rodriguez",
-      company: "Growth Marketing Co",
-      role: "Marketing Director",
-      avatar: "ER",
-      initials: "ER",
+      quote: "Professional, fast, and results-driven. They transformed our business operations completely.",
+      author: "Lisa Johnson",
+      company: "Johnson Consulting",
+      role: "Founder",
+      avatar: "LJ",
+      initials: "LJ",
     },
   ],
   // Client logos - placeholder data until we have actual clients
   clientLogos: [
-    { name: "Metro Convenience", placeholder: "MC" },
-    { name: "TechStart Solutions", placeholder: "TS" },
-    { name: "Growth Marketing Co", placeholder: "GM" },
-    { name: "Retail Plus", placeholder: "RP" },
-    { name: "Digital Ventures", placeholder: "DV" },
+    { name: "Elite Cleaning", placeholder: "EC" },
+    { name: "QuickMart Stores", placeholder: "QM" },
+    { name: "Johnson Consulting", placeholder: "JC" },
+    { name: "Metro Services", placeholder: "MS" },
+    { name: "Digital Solutions", placeholder: "DS" },
     { name: "Smart Business", placeholder: "SB" },
   ],
 } as const;
 
 export const TECHNOLOGY_SECTION = {
-  title: 'Our Expertise',
-  subtitle: 'Built with cutting-edge technology',
+  title: 'Built with Modern Technology',
+  subtitle: 'Enterprise-grade tools for reliable performance',
   categories: [
     {
-      title: 'Development',
+      title: 'Web Development',
       technologies: [
         { name: 'Next.js', description: 'React Framework' },
         { name: 'Vercel', description: 'Deployment Platform' },
-        { name: 'Node.js', description: 'Backend Runtime' },
+        { name: 'TypeScript', description: 'Type Safety' },
       ],
     },
     {
-      title: 'AI & Data',
+      title: 'AI & Analytics',
       technologies: [
         { name: 'OpenAI', description: 'AI Models' },
-        { name: 'Gemini', description: 'Google AI' },
-        { name: 'AWS', description: 'Cloud Services' },
-        { name: 'Google Cloud', description: 'Cloud Platform' },
+        { name: 'Google AI', description: 'Machine Learning' },
+        { name: 'AWS', description: 'Cloud Services', isHighlighted: true },
       ],
     },
     {
       title: 'Business Tools',
       technologies: [
         { name: 'HubSpot', description: 'CRM Platform' },
-        { name: 'Shopify', description: 'E-commerce' },
         { name: 'Zapier', description: 'Automation' },
+        { name: 'Google Analytics', description: 'Analytics' },
       ],
     },
   ],
@@ -154,12 +167,64 @@ export const TECHNOLOGY_SECTION = {
 
 export const FINAL_CTA_SECTION = {
   title: 'Ready to Transform Your Business?',
-  subtitle: 'Join the businesses that have already discovered the power of AI-driven growth. Let\'s build something amazing together.',
-  ctaText: 'Schedule a Free Consultation',
+  subtitle: 'Join hundreds of businesses that have already discovered the power of AI-driven growth. Let\'s build something amazing together.',
+  ctaText: 'Get Your Free Consultation',
   ctaHref: '/contact',
   features: [
     'Free 30-minute consultation',
-    'Custom AI strategy assessment',
+    'Custom business assessment',
     'No commitment required',
+  ],
+} as const;
+
+// New pricing structure
+export const PRICING_SECTION = {
+  title: 'Simple, Transparent Pricing',
+  subtitle: 'Choose the package that fits your business needs',
+  packages: [
+    {
+      name: 'Starter',
+      price: '$2,500',
+      description: 'Perfect for new businesses',
+      features: [
+        'Professional website',
+        'Mobile optimization',
+        'Basic SEO setup',
+        'Contact forms',
+        '30-day support',
+      ],
+      cta: 'Get Started',
+      popular: false,
+    },
+    {
+      name: 'Growth',
+      price: '$7,500',
+      description: 'Most popular for growing businesses',
+      features: [
+        'Everything in Starter',
+        'Business automation tools',
+        'Customer management system',
+        'Marketing automation',
+        '90-day support',
+        'Monthly reporting',
+      ],
+      cta: 'Choose Growth',
+      popular: true,
+    },
+    {
+      name: 'Enterprise',
+      price: 'Custom',
+      description: 'For businesses ready to scale',
+      features: [
+        'Everything in Growth',
+        'Custom AI solutions',
+        'Advanced analytics',
+        'Dedicated support',
+        'Quarterly strategy reviews',
+        'Priority development',
+      ],
+      cta: 'Contact Us',
+      popular: false,
+    },
   ],
 } as const;

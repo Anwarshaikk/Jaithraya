@@ -1,14 +1,20 @@
+'use client';
 import React from 'react';
 import { PROCESS_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import ProcessCard from './ProcessCard';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface ProcessSectionProps {
   className?: string;
 }
 
 const ProcessSection: React.FC<ProcessSectionProps> = ({ className }) => {
+  const { ref, isInView } = useScrollAnimation();
+
   return (
-    <section className={cn('py-20 bg-gradient-to-br from-neutral-50 to-saffron-50', className)}>
+    <section id="process" className={cn('py-20 bg-gradient-to-br from-neutral-50 to-saffron-50 border-t border-saffron-100', className)}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-neutral-800 mb-4">
@@ -19,43 +25,20 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ className }) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-          {PROCESS_SECTION.steps.map((step, index) => (
-            <div
-              key={step.number}
-              className="relative text-center group"
-            >
-              {/* Connection Line with Arrow */}
-              {index < PROCESS_SECTION.steps.length - 1 && (
-                <div className="hidden md:block absolute top-16 left-1/2 w-full h-0.5 -translate-y-1/2 z-0">
-                  <div className="absolute top-1/2 left-1/2 w-full h-0.5 bg-gradient-to-r from-saffron-300 to-accent-300"></div>
-                  <div className="absolute top-1/2 right-0 w-0 h-0 border-l-4 border-l-accent-400 border-t-2 border-b-2 border-t-transparent border-b-transparent transform -translate-y-1/2"></div>
-                </div>
-              )}
-
-              {/* Step Content */}
-              <div className="relative z-10 bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                {/* Step Number */}
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-saffron-500 text-white text-xl font-bold rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {step.number}
+        <div ref={ref} className="relative grid md:grid-cols-3 gap-8 lg:gap-12">
+          {/* Animated Connecting Line */}
+          <div className="hidden md:block absolute top-8 left-0 w-full h-1 -translate-y-1/2 z-0">
+            <motion.div
+              className="h-full bg-gradient-to-r from-saffron-300 to-accent-300"
+              initial={{ scaleX: 0 }}
+              animate={isInView ? { scaleX: 1 } : {}}
+              transition={{ duration: 1, ease: 'easeInOut' }}
+              style={{ transformOrigin: 'left' }}
+            />
                 </div>
 
-                {/* Step Icon */}
-                <div className="text-4xl mb-4">
-                  {step.icon}
-                </div>
-
-                {/* Step Title */}
-                <h3 className="text-2xl font-semibold text-neutral-800 mb-4">
-                  {step.title}
-                </h3>
-
-                {/* Step Description */}
-                <p className="text-neutral-600 leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            </div>
+          {PROCESS_SECTION.steps.map((step) => (
+            <ProcessCard key={step.number} step={step} />
           ))}
         </div>
 
