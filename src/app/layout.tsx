@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import { APP_CONFIG } from "@/constants";
@@ -6,7 +6,12 @@ import { ConsultationProvider } from "@/contexts/ConsultationContext";
 import { Toaster } from "sonner";
 import ConsultationWrapper from "@/components/ConsultationWrapper";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+});
 
 export const metadata = {
   title: `${APP_CONFIG.name} - ${APP_CONFIG.tagline}`,
@@ -35,10 +40,10 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${poppins.variable} font-sans`}>
         <ConsultationProvider>
           <Header />
-          <main>{children}</main>
+          <main className="py-12">{children}</main>
           <Toaster />
           <ConsultationWrapper />
         </ConsultationProvider>
