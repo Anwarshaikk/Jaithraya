@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import { APP_CONFIG } from "@/constants";
 import { ConsultationProvider } from "@/contexts/ConsultationContext";
+import { Toaster } from "sonner";
 import ConsultationWrapper from "@/components/ConsultationWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,7 +38,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <ConsultationProvider>
           <Header />
-          {children}
+          <main>{children}</main>
+          <Toaster />
           <ConsultationWrapper />
         </ConsultationProvider>
       </body>

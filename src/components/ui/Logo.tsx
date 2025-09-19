@@ -40,41 +40,36 @@ const Logo: React.FC<LogoProps> = ({
 
   return (
     <div className={cn('flex items-center space-x-3 group cursor-pointer', className)}>
-      {/* Logo Icon - Boxed J with gradient */}
-      <div className={cn(
-        'flex items-center justify-center rounded-md bg-gradient-to-br from-saffron-400 via-saffron-500 to-teal-400 shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:scale-110',
-        sizeClasses[size]
-      )}>
-        <svg 
-          width={iconSize[size]} 
-          height={iconSize[size]} 
-          viewBox="0 0 32 32" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-          className="text-white"
-        >
-          <rect width="32" height="32" rx="6" fill="currentColor" className="text-saffron-500" />
-          <text 
-            x="16" 
-            y="26" 
-            fontFamily="Arial, sans-serif" 
-            fontSize="22" 
-            fontWeight="bold" 
-            textAnchor="middle" 
-            fill="white"
-          >
-            J
-          </text>
-        </svg>
-      </div>
-      
+      {/* Logo Icon - Triangle */}
+      <svg
+        width={iconSize[size]}
+        height={iconSize[size]}
+        viewBox="0 0 100 87"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={cn(sizeClasses[size], 'transition-all duration-300 group-hover:scale-110')}
+      >
+        <path 
+          d="M50 0 L0 87 L50 58Z" 
+          className="fill-saffron-400 group-hover:fill-teal-400 transition-colors duration-300"
+        />
+        <path 
+          d="M50 0 L100 87 L50 58Z" 
+          className="fill-teal-400 group-hover:fill-saffron-500 transition-colors duration-300"
+        />
+        <path 
+          d="M0 87 L100 87 L50 58Z" 
+          className="fill-saffron-500 group-hover:fill-saffron-400 transition-colors duration-300"
+        />
+      </svg>
+
       {/* Company Name and Tagline */}
       {(showText || showTagline) && (
         <div className="flex flex-col">
           {/* Company Name */}
           {showText && (
             <span className={cn(
-              'font-bold text-charcoal-900 group-hover:text-saffron-500 transition-colors duration-300',
+              'font-bold text-saffron-500 group-hover:text-teal-600 transition-colors duration-300', 
               textSizeClasses[size]
             )}>
               Jaithraya
@@ -84,7 +79,7 @@ const Logo: React.FC<LogoProps> = ({
           {/* Tagline */}
           {showTagline && (
             <span className={cn(
-              'text-saffron-500 group-hover:text-charcoal-900 transition-colors duration-300',
+              'text-teal-600 group-hover:text-saffron-500 transition-colors duration-300',
               taglineSizeClasses[size]
             )}>
               AI-Driven Business Automation

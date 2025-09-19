@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail, Phone, Calendar, Building, DollarSign, Clock, MessageSquare } from 'lucide-react';
+import Button from '@/components/ui/Button';
 
 interface ConsultationData {
   id: string;
@@ -95,12 +96,12 @@ export default function ConsultationsPage() {
           <div className="text-red-500 text-6xl mb-4">⚠️</div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Error</h1>
           <p className="text-gray-600">{error}</p>
-          <button
+          <Button
             onClick={fetchConsultations}
-            className="mt-4 bg-saffron-500 text-white px-6 py-2 rounded-lg hover:bg-saffron-600 transition-colors"
+            className="mt-4 bg-saffron-500 hover:bg-teal-500"
           >
             Try Again
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -118,14 +119,14 @@ export default function ConsultationsPage() {
                 {consultations.length} submission{consultations.length !== 1 ? 's' : ''} received
               </p>
             </div>
-            <button
+            <Button
               onClick={exportToCSV}
               disabled={consultations.length === 0}
-              className="bg-saffron-500 text-white px-6 py-3 rounded-lg hover:bg-saffron-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+              className="bg-saffron-500 hover:bg-teal-500"
             >
               <Download className="w-5 h-5 mr-2" />
               Export CSV
-            </button>
+            </Button>
           </div>
         </div>
 

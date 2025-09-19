@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import ProcessCard from './ProcessCard';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import Button from '@/components/ui/Button';
 
 interface ProcessSectionProps {
   className?: string;
@@ -43,16 +44,14 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ className }) => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-neutral-600 mb-6">
-            Ready to start your transformation journey?
-          </p>
-          <a
-            href="/contact"
-            className="bg-saffron-500 text-white rounded-full px-8 py-3 font-semibold hover:bg-saffron-600 transition duration-300 inline-block shadow-lg hover:shadow-xl"
+        <div className="text-center mt-12">
+          <Button 
+            href="/contact" 
+            variant="primary"
+            className="bg-saffron-500 hover:bg-teal-500"
           >
-            Get Started Today
-          </a>
+            Schedule Your Free Consultation
+          </Button>
         </div>
       </div>
     </section>
