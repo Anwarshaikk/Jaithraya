@@ -3,7 +3,7 @@
 export interface NavItem {
   label: string;
   href: string;
-  isButton?: boolean;
+  isButton: boolean;
 }
 
 export interface HeroSection {
