@@ -3,15 +3,12 @@ import React from 'react';
 import { TECHNOLOGY_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface TechnologySectionProps {
   className?: string;
 }
 
 const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
-  const { ref, isInView } = useScrollAnimation();
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -32,7 +29,8 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: -20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.7 }}
             className="text-4xl font-bold text-neutral-800 mb-4"
           >
@@ -40,7 +38,8 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: -20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-xl text-neutral-600"
           >
@@ -50,11 +49,11 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ className }) => {
 
         {/* Technology Categories */}
         <motion.div
-          ref={ref}
           className="grid md:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
           {TECHNOLOGY_SECTION.categories.map((category) => (
             <motion.div

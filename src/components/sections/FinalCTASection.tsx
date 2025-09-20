@@ -3,7 +3,6 @@ import React from 'react';
 import { FINAL_CTA_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
 import { motion, Variants } from 'framer-motion';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
 import { useConsultation } from '@/contexts/ConsultationContext';
 import Button from '@/components/ui/Button';
@@ -13,7 +12,6 @@ interface FinalCTASectionProps {
 }
 
 const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
-  const { ref, isInView } = useScrollAnimation();
   const { openModal } = useConsultation();
 
   const containerVariants = {
@@ -38,11 +36,11 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          ref={ref}
           className="max-w-4xl mx-auto text-center"
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
         >
           {/* Main Content */}
           <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold text-charcoal-900 mb-6">

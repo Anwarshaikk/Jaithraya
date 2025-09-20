@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import { APP_CONFIG } from "@/constants";
 import { ConsultationProvider } from "@/contexts/ConsultationContext";
+import { AuthProvider } from '@/contexts/AuthContext';
 import { Toaster } from "sonner";
 import ConsultationWrapper from "@/components/ConsultationWrapper";
 
@@ -41,12 +42,14 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-        <ConsultationProvider>
-          <Header />
-          <main className="py-12">{children}</main>
-          <Toaster />
-          <ConsultationWrapper />
-        </ConsultationProvider>
+        <AuthProvider>
+          <ConsultationProvider>
+            <Header />
+            <main className="py-12">{children}</main>
+            <Toaster />
+            <ConsultationWrapper />
+          </ConsultationProvider>
+        </AuthProvider>
       </body>
     </html>
   );

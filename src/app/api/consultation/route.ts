@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { authAdmin, dbAdmin } from '@/lib/firebaseAdmin';
 
 export interface ConsultationFormData {
   name: string;
@@ -12,10 +13,6 @@ export interface ConsultationFormData {
   preferredContact: string;
   additionalInfo: string;
 }
-
-// In a real application, you would store this in a database
-// For now, we'll store it in memory (this will reset when the server restarts)
-let consultationSubmissions: (ConsultationFormData & { submittedAt: string; id: string })[] = [];
 
 export async function POST(request: NextRequest) {
   try {
@@ -44,25 +41,18 @@ export async function POST(request: NextRequest) {
     // Create submission record
     const submission = {
       ...data,
-      id: `consultation_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       submittedAt: new Date().toISOString()
     };
 
-    // Store the submission
-    consultationSubmissions.push(submission);
+    // Store the submission in Firestore
+    const docRef = await dbAdmin.collection('consultations').add(submission);
 
-    // In a real application, you would:
-    // 1. Save to database
-    // 2. Send email notification
-    // 3. Add to CRM system
-    // 4. Send confirmation email to customer
-
-    console.log('New consultation submission:', submission);
+    console.log('New consultation submission:', { id: docRef.id, ...submission });
 
     return NextResponse.json({
       success: true,
       message: 'Consultation form submitted successfully',
-      id: submission.id
+      id: docRef.id
     });
 
   } catch (error) {
@@ -74,16 +64,29 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    // In a real application, you would fetch from database
-    // For now, return the in-memory data
+    const authorization = request.headers.get('Authorization');
+    if (!authorization?.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const idToken = authorization.split('Bearer ')[1];
+    await authAdmin.verifyIdToken(idToken);
+
+    // Fetch from Firestore
+    const querySnapshot = await dbAdmin.collection('consultations').get();
+    const consultationSubmissions = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
     return NextResponse.json({
       success: true,
       data: consultationSubmissions,
       count: consultationSubmissions.length
     });
-  } catch (error) {
+  } catch (error: any) {
+    if (error.code === 'auth/id-token-expired' || error.code === 'auth/argument-error') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
     console.error('Error fetching consultation submissions:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

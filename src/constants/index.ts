@@ -249,15 +249,18 @@ export const ABOUT_SECTION = {
     values: [
       {
         title: 'Integrity',
-        description: 'I deliver exactly what I promise, when I promise it'
+        description: 'I deliver exactly what I promise, when I promise it',
+        quote: '“Anwar is a man of his word. The project was delivered on time and exceeded our expectations.”'
       },
       {
         title: 'Innovation', 
-        description: 'I constantly explore new ways to solve business problems with AI'
+        description: 'I constantly explore new ways to solve business problems with AI',
+        quote: '“The AI solution Anwar built for us was a game-changer. It automated a process we thought was impossible to automate.”'
       },
       {
         title: 'Client Growth',
-        description: 'Your success is my success - I measure my worth by your results'
+        description: 'Your success is my success - I measure my worth by your results',
+        quote: '“Our revenue has increased by 40% since we started working with Jaithraya. The results speak for themselves.”'
       }
     ],
     quote: 'AI made problem-solving easy for me, and I want to make it easy for you too. I started Jaithraya to bridge the gap between corporate AI and small business needs, helping every business achieve victory across all three dimensions of success.',

@@ -3,7 +3,6 @@ import React from 'react';
 import { SOCIAL_PROOF_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Quote } from 'lucide-react';
 
 interface SocialProofSectionProps {
@@ -11,8 +10,6 @@ interface SocialProofSectionProps {
 }
 
 const SocialProofSection: React.FC<SocialProofSectionProps> = ({ className }) => {
-  const { ref, isInView } = useScrollAnimation();
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -50,11 +47,11 @@ const SocialProofSection: React.FC<SocialProofSectionProps> = ({ className }) =>
 
         {/* Testimonials */}
         <motion.div
-          ref={ref}
           className="grid md:grid-cols-3 gap-8 mb-16"
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
           {SOCIAL_PROOF_SECTION.testimonials.map((testimonial) => (
             <motion.div

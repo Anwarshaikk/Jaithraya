@@ -4,12 +4,9 @@ import Link from 'next/link';
 import { SOLUTIONS_SECTION } from '@/constants';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ArrowUpRight } from 'lucide-react';
 
 const SolutionsSection = () => {
-  const { ref, isInView } = useScrollAnimation();
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,17 +36,18 @@ const SolutionsSection = () => {
         <motion.h2
           className="text-4xl font-bold text-neutral-800 mb-12"
           initial={{ opacity: 0, y: -30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7 }}
         >
           {SOLUTIONS_SECTION.title}
         </motion.h2>
         <motion.div
-          ref={ref}
           className="flex flex-wrap justify-center gap-8"
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
           {SOLUTIONS_SECTION.solutionCards.map((card) => (
             <motion.div

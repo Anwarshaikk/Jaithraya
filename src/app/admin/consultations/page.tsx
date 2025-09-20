@@ -4,6 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail, Phone, Calendar, Building, DollarSign, Clock, MessageSquare } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { withAuth, useAuth } from '@/contexts/AuthContext';
+import { auth } from '@/lib/firebase';
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 interface ConsultationData {
   id: string;
@@ -20,18 +24,34 @@ interface ConsultationData {
   submittedAt: string;
 }
 
-export default function ConsultationsPage() {
+function ConsultationsPage() {
   const [consultations, setConsultations] = useState<ConsultationData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { user } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
-    fetchConsultations();
-  }, []);
+    if (user) {
+      fetchConsultations();
+    }
+  }, [user]);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    router.push('/admin/login');
+  };
 
   const fetchConsultations = async () => {
+    if (!user) return;
     try {
-      const response = await fetch('/api/consultation');
+      setLoading(true);
+      const token = await user.getIdToken();
+      const response = await fetch('/api/consultation', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) throw new Error('Failed to fetch consultations');
       
       const data = await response.json();
@@ -126,6 +146,9 @@ export default function ConsultationsPage() {
             >
               <Download className="w-5 h-5 mr-2" />
               Export CSV
+            </Button>
+            <Button onClick={handleLogout} className="bg-red-500 hover:bg-red-600">
+              Logout
             </Button>
           </div>
         </div>
@@ -227,3 +250,5 @@ export default function ConsultationsPage() {
     </div>
   );
 }
+
+export default withAuth(ConsultationsPage);
