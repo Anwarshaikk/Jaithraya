@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail, Phone, Calendar, Building, DollarSign, Clock, MessageSquare } from 'lucide-react';
 import Button from '@/components/ui/Button';
@@ -31,18 +31,7 @@ function ConsultationsPage() {
   const { user } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    if (user) {
-      fetchConsultations();
-    }
-  }, [user]);
-
-  const handleLogout = async () => {
-    await signOut(auth);
-    router.push('/admin/login');
-  };
-
-  const fetchConsultations = async () => {
+  const fetchConsultations = useCallback(async () => {
     if (!user) return;
     try {
       setLoading(true);
@@ -61,6 +50,17 @@ function ConsultationsPage() {
     } finally {
       setLoading(false);
     }
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      fetchConsultations();
+    }
+  }, [user, fetchConsultations]);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    router.push('/admin/login');
   };
 
   const exportToCSV = () => {
