@@ -17,7 +17,7 @@ const initializeFirebaseAdmin = () => {
     // This is a fallback for local development and should not run in Vercel.
     // The server-only package prevents this from being a build-time issue.
     try {
-      serviceAccount = require('../../serviceAccountKey.json');
+      serviceAccount = eval('require')('../../serviceAccountKey.json');
     } catch (e) {
       throw new Error(
         'FIREBASE_SERVICE_ACCOUNT_KEY is not set and serviceAccountKey.json was not found for local development.'
