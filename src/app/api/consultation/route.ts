@@ -15,6 +15,13 @@ export interface ConsultationFormData {
 }
 
 export async function POST(request: NextRequest) {
+  if (!dbAdmin) {
+    return NextResponse.json(
+      { error: 'Firebase Admin SDK not initialized.' },
+      { status: 500 }
+    );
+  }
+
   try {
     const data: ConsultationFormData = await request.json();
     
@@ -65,6 +72,13 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  if (!authAdmin || !dbAdmin) {
+    return NextResponse.json(
+      { error: 'Firebase Admin SDK not initialized.' },
+      { status: 500 }
+    );
+  }
+
   try {
     const authorization = request.headers.get('Authorization');
     if (!authorization?.startsWith('Bearer ')) {
