@@ -36,12 +36,7 @@ const initializeFirebaseAdmin = () => {
 };
 
 // Initialize the app
-try {
-  initializeFirebaseAdmin();
-} catch (e: any) {
-  // Log the specific initialization error during runtime
-  console.error(`Firebase Admin initialization failed: ${e.message}`);
-}
+initializeFirebaseAdmin();
 
 // Export null if the app didn't initialize, to be checked in API routes
 const authAdmin = admin.apps.length ? admin.auth() : null;
