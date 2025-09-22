@@ -1,31 +1,31 @@
-17:28:05.139 
+08:13:30.733 
     at a.getOrInitializeService (/vercel/path0/.next/server/chunks/917.js:249:2684)
-17:28:05.139 
+08:13:30.733 
     at a.initialize (/vercel/path0/.next/server/chunks/917.js:249:2092)
-17:28:05.139 
+08:13:30.733 
     at eU (/vercel/path0/.next/server/chunks/917.js:893:174)
-17:28:05.139 
+08:13:30.733 
     at tx (/vercel/path0/.next/server/chunks/917.js:1253:1070)
-17:28:05.139 
+08:13:30.733 
     at 445 (/vercel/path0/.next/server/chunks/725.js:1:28640)
-17:28:05.140 
+08:13:30.733 
     at t (/vercel/path0/.next/server/webpack-runtime.js:1:128)
-17:28:05.140 
+08:13:30.733 
     at 4001 (/vercel/path0/.next/server/chunks/725.js:1:26311)
-17:28:05.140 
+08:13:30.742 
  ✓ Generating static pages (8/8)
-17:28:05.143 
-17:28:05.143 
+08:13:30.777 
+08:13:30.777 
 > Export encountered errors on following paths:
-17:28:05.143 
+08:13:30.778 
 	/_not-found/page: /_not-found
-17:28:05.143 
+08:13:30.778 
 	/about/page: /about
-17:28:05.143 
+08:13:30.778 
 	/admin/consultations/page: /admin/consultations
-17:28:05.143 
+08:13:30.778 
 	/admin/login/page: /admin/login
-17:28:05.143 
+08:13:30.778 
 	/page: /
-17:28:05.174 
+08:13:30.804 
 Error: Command "npm run build" exited with 1

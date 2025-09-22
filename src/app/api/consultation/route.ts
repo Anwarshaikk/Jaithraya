@@ -1,18 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { authAdmin, dbAdmin } from '@/lib/firebaseAdmin';
+import { ConsultationFormData } from '@/lib/types';
+import { Resend } from 'resend';
+import ProspectConfirmation from '@/emails/ProspectConfirmation';
+import InternalNotification from '@/emails/InternalNotification';
 
-export interface ConsultationFormData {
-  name: string;
-  email: string;
-  phone: string;
-  company: string;
-  businessType: string;
-  currentChallenges: string;
-  budget: string;
-  timeline: string;
-  preferredContact: string;
-  additionalInfo: string;
-}
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   if (!dbAdmin) {
@@ -55,6 +48,75 @@ export async function POST(request: NextRequest) {
     const docRef = await dbAdmin.collection('consultations').add(submission);
 
     console.log('New consultation submission:', { id: docRef.id, ...submission });
+
+    // Send emails
+    try {
+      // Email to Prospect
+      await resend.emails.send({
+        from: process.env.FROM_EMAIL!,
+        to: data.email,
+        subject: 'Thank You for Your Consultation Request',
+        react: ProspectConfirmation({ name: data.name }),
+      });
+
+      // Email to Internal Team
+      await resend.emails.send({
+        from: process.env.FROM_EMAIL!,
+        to: process.env.INTERNAL_NOTIFICATION_EMAIL!,
+        subject: 'New Consultation Form Submission',
+        react: InternalNotification(data),
+      });
+
+      console.log('Confirmation and notification emails sent successfully.');
+    } catch (emailError) {
+      console.error('Error sending emails:', emailError);
+      // We don't want to block the user response for an email error
+      // but we should log it for monitoring.
+    }
+
+    // Send Slack Notification
+    if (process.env.SLACK_WEBHOOK_URL) {
+      try {
+        const slackMessage = {
+          text: `🎉 New Consultation Request from ${data.name} (${data.company})`,
+          blocks: [
+            {
+              type: 'header',
+              text: {
+                type: 'plain_text',
+                text: '🎉 New Consultation Request',
+              },
+            },
+            {
+              type: 'section',
+              fields: [
+                { type: 'mrkdwn', text: `*Name:*\n${data.name}` },
+                { type: 'mrkdwn', text: `*Email:*\n${data.email}` },
+                { type: 'mrkdwn', text: `*Company:*\n${data.company}` },
+                { type: 'mrkdwn', text: `*Phone:*\n${data.phone}` },
+              ],
+            },
+            {
+              type: 'section',
+              text: {
+                type: 'mrkdwn',
+                text: `*Challenges:*\n${data.currentChallenges}`,
+              },
+            },
+          ],
+        };
+
+        await fetch(process.env.SLACK_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(slackMessage),
+        });
+
+        console.log('Slack notification sent successfully.');
+      } catch (slackError) {
+        console.error('Error sending Slack notification:', slackError);
+      }
+    }
 
     return NextResponse.json({
       success: true,
