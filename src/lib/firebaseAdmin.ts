@@ -25,14 +25,10 @@ const initializeFirebaseAdmin = () => {
     }
   }
 
-  try {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-    });
-    console.log('Firebase Admin SDK initialized successfully.');
-  } catch (error: any) {
-    throw new Error(`Firebase Admin SDK initialization error: ${error.message}`);
-  }
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+  console.log('Firebase Admin SDK initialized successfully.');
 };
 
 // Initialize the app
