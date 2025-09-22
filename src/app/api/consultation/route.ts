@@ -51,25 +51,33 @@ export async function POST(request: NextRequest) {
 
     // Send emails
     try {
+      console.log('Attempting to send emails...');
+      console.log('FROM_EMAIL:', process.env.FROM_EMAIL);
+      console.log('INTERNAL_NOTIFICATION_EMAIL:', process.env.INTERNAL_NOTIFICATION_EMAIL);
+      console.log('RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
+
       // Email to Prospect
-      await resend.emails.send({
+      const prospectEmailResult = await resend.emails.send({
         from: process.env.FROM_EMAIL!,
         to: data.email,
         subject: 'Thank You for Your Consultation Request',
         react: ProspectConfirmation({ name: data.name }),
       });
+      console.log('Prospect email sent:', prospectEmailResult);
 
       // Email to Internal Team
-      await resend.emails.send({
+      const internalEmailResult = await resend.emails.send({
         from: process.env.FROM_EMAIL!,
         to: process.env.INTERNAL_NOTIFICATION_EMAIL!,
         subject: 'New Consultation Form Submission',
         react: InternalNotification(data),
       });
+      console.log('Internal email sent:', internalEmailResult);
 
       console.log('Confirmation and notification emails sent successfully.');
     } catch (emailError) {
       console.error('Error sending emails:', emailError);
+      console.error('Email error details:', JSON.stringify(emailError, null, 2));
       // We don't want to block the user response for an email error
       // but we should log it for monitoring.
     }
