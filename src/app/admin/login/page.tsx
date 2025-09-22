@@ -25,10 +25,18 @@ export default function LoginPage() {
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
+      console.log('Attempting Google sign-in...');
+      console.log('Firebase config:', {
+        apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY ? 'Set' : 'Missing',
+        authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN ? 'Set' : 'Missing',
+        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ? 'Set' : 'Missing',
+      });
+      const result = await signInWithPopup(auth, provider);
+      console.log('Google sign-in successful:', result);
       router.push('/admin/consultations');
     } catch (err) {
-      setError('Failed to sign in with Google');
+      console.error('Google sign-in error:', err);
+      setError(`Failed to sign in with Google: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
   };
 
