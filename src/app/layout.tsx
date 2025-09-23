@@ -8,7 +8,6 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import { Toaster } from "sonner";
 import ConsultationWrapper from "@/components/ConsultationWrapper";
 import StickyCTA from "@/components/StickyCTA";
-import { ThemeProvider } from '@/components/ThemeProvider';
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -50,23 +49,16 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans bg-wash text-charcoal-800`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AuthProvider>
-            <ConsultationProvider>
-              <Header />
-              <main>{children}</main>
-              <Footer />
-              <Toaster />
-              <ConsultationWrapper />
-              <StickyCTA />
-            </ConsultationProvider>
-          </AuthProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ConsultationProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <Toaster />
+            <ConsultationWrapper />
+            <StickyCTA />
+          </ConsultationProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -6,7 +6,6 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/ui/Logo';
 import { Button } from '@/components/ui/Button';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import { useConsultation } from '@/contexts/ConsultationContext';
 
 const NAV_LINKS = [
@@ -20,44 +19,7 @@ const NAV_LINKS = [
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
-  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const { openModal } = useConsultation();
-
-  useEffect(() => {
-    // Only set up intersection observer for anchor links
-    const anchorLinks = NAV_LINKS.filter(link => link.href.startsWith('#'));
-    
-    anchorLinks.forEach(link => {
-      sectionRefs.current[link.href.substring(1)] = document.getElementById(link.href.substring(1));
-    });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-50% 0px -50% 0px' }
-    );
-
-    const sections = Object.values(sectionRefs.current);
-    sections.forEach(section => {
-      if (section) {
-        observer.observe(section);
-      }
-    });
-
-    return () => {
-      sections.forEach(section => {
-        if (section) {
-          observer.unobserve(section);
-        }
-      });
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,10 +63,7 @@ const NavBar = () => {
             <Link
               key={link.href}
               href={link.href}
-              className={cn(
-                "text-charcoal-600 hover:text-saffron-500 transition-colors",
-                link.href.startsWith('#') && activeSection === link.href.substring(1) && "text-saffron-500 font-semibold"
-              )}
+              className="text-charcoal-600 hover:text-saffron-500 transition-colors"
             >
               {link.label}
             </Link>
@@ -119,7 +78,6 @@ const NavBar = () => {
           >
             Get Free Consultation
           </Button>
-          <ThemeToggle />
         </div>
 
         <div className="md:hidden">
@@ -151,10 +109,7 @@ const NavBar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "text-charcoal-800 hover:text-saffron-500 transition-colors",
-                  link.href.startsWith('#') && activeSection === link.href.substring(1) && "text-saffron-500 font-semibold"
-                )}
+                className="text-charcoal-800 hover:text-saffron-500 transition-colors"
                 onClick={toggleMenu}
               >
                 {link.label}
@@ -168,9 +123,6 @@ const NavBar = () => {
             >
               Get Free Consultation
             </Button>
-            <div className="mt-6">
-              <ThemeToggle />
-            </div>
           </nav>
         </div>
       </div>
