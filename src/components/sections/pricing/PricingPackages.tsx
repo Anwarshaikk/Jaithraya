@@ -79,14 +79,14 @@ const PricingPackages = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`relative rounded-2xl shadow-lg overflow-hidden ${
+              className={`relative rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 ${
                 pkg.popular
-                  ? 'ring-2 ring-blue-600 transform scale-105'
+                  ? 'ring-2 ring-saffron-500 transform scale-105'
                   : 'border border-gray-200'
               }`}
             >
               {pkg.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-blue-600 text-white text-center py-2 text-sm font-semibold">
+                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-saffron-500 to-teal-500 text-white text-center py-2 text-sm font-semibold">
                   Most Popular
                 </div>
               )}
@@ -130,7 +130,7 @@ const PricingPackages = () => {
                 <button
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
                     pkg.popular
-                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      ? 'bg-gradient-to-r from-saffron-500 to-teal-500 text-white hover:from-saffron-600 hover:to-teal-600'
                       : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                   }`}
                 >
@@ -145,7 +145,7 @@ const PricingPackages = () => {
           <p className="text-gray-600 mb-4">
             Need a custom solution? We offer tailored packages for unique business requirements.
           </p>
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          <button className="bg-gradient-to-r from-saffron-500 to-teal-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-saffron-600 hover:to-teal-600 transition-colors">
             Request Custom Quote
           </button>
         </div>

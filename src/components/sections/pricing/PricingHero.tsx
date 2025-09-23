@@ -37,7 +37,7 @@ const PricingHero: React.FC = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-saffron-50 via-saffron-100 to-orange-200 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-saffron-50 via-white to-teal-50 overflow-hidden">
       {/* Background Pattern */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -55,7 +55,7 @@ const PricingHero: React.FC = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: 'easeOut', delay: 0.9 }}
-        className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-accent-200/40 to-transparent rounded-full translate-y-40 -translate-x-40 blur-2xl"
+        className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-teal-200/40 to-transparent rounded-full translate-y-40 -translate-x-40 blur-2xl"
       />
       
       <div className="container mx-auto px-6 py-32 pb-40 text-center relative z-10">
@@ -118,7 +118,7 @@ const PricingHero: React.FC = () => {
               onClick={openModal}
               variant="primary"
               size="lg"
-              className="group bg-saffron-500 hover:bg-teal-500"
+              className="group bg-gradient-to-r from-saffron-500 to-teal-500 text-white hover:from-saffron-600 hover:to-teal-600"
             >
               Get Your Free Consultation
               <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />

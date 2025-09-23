@@ -30,7 +30,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({ step }) => {
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-6">
           <span className="text-5xl font-bold text-saffron-200/80 group-hover:text-saffron-300 transition-colors duration-300">{step.number}</span>
-          <div className="w-16 h-16 bg-saffron-500 text-white flex items-center justify-center rounded-full text-3xl shadow-md group-hover:bg-accent-500 group-hover:scale-110 transition-all duration-300">
+          <div className="w-16 h-16 bg-teal-500 text-white flex items-center justify-center rounded-full text-3xl shadow-md group-hover:bg-teal-600 group-hover:scale-110 transition-all duration-300">
             {step.icon}
           </div>
         </div>

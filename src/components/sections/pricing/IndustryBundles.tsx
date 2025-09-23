@@ -66,7 +66,7 @@ const IndustryBundles = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gradient-to-br from-saffron-50 via-white to-teal-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Industry-Specific Bundles</h2>
@@ -77,18 +77,18 @@ const IndustryBundles = () => {
           {bundles.map((bundle, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl shadow-lg overflow-hidden ${
-                bundle.popular ? 'ring-2 ring-blue-600' : 'border border-gray-200'
+              className={`bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 ${
+                bundle.popular ? 'ring-2 ring-saffron-500' : 'border border-gray-200'
               }`}
             >
               {bundle.popular && (
-                <div className="bg-blue-600 text-white text-center py-2 text-sm font-semibold">
+                <div className="bg-gradient-to-r from-saffron-500 to-teal-500 text-white text-center py-2 text-sm font-semibold">
                   <Star className="w-4 h-4 inline mr-1" />
                   Most Popular
                 </div>
               )}
               
-              <div className={`p-8 ${bundle.popular ? 'pt-12' : ''}`}>
+              <div className={`p-8 ${bundle.popular ? '' : ''}`}>
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{bundle.industry}</h3>
                   <p className="text-gray-600 mb-4">{bundle.description}</p>
@@ -103,7 +103,7 @@ const IndustryBundles = () => {
                   <ul className="space-y-2">
                     {bundle.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
-                        <Check className="w-4 h-4 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                        <Check className="w-4 h-4 text-teal-500 mr-3 mt-1 flex-shrink-0" />
                         <span className="text-gray-700 text-sm">{feature}</span>
                       </li>
                     ))}
@@ -115,7 +115,7 @@ const IndustryBundles = () => {
                   <ul className="space-y-2">
                     {bundle.benefits.map((benefit, benefitIndex) => (
                       <li key={benefitIndex} className="flex items-start">
-                        <Star className="w-4 h-4 text-yellow-500 mr-3 mt-1 flex-shrink-0" />
+                        <Star className="w-4 h-4 text-saffron-500 mr-3 mt-1 flex-shrink-0" />
                         <span className="text-gray-700 text-sm">{benefit}</span>
                       </li>
                     ))}
@@ -125,7 +125,7 @@ const IndustryBundles = () => {
                 <button
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
                     bundle.popular
-                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      ? 'bg-gradient-to-r from-saffron-500 to-teal-500 text-white hover:from-saffron-600 hover:to-teal-600'
                       : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                   }`}
                 >
@@ -143,7 +143,7 @@ const IndustryBundles = () => {
               We work with businesses across all industries. Our team can create a custom 
               marketing strategy tailored specifically to your industry's unique challenges and opportunities.
             </p>
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            <button className="bg-gradient-to-r from-saffron-500 to-teal-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-saffron-600 hover:to-teal-600 transition-colors">
               Discuss Custom Solution
             </button>
           </div>

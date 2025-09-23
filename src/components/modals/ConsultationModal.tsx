@@ -210,6 +210,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     </div>
                     <Button
                       type="submit"
+                      variant="primary"
                       className="w-full"
                       disabled={isSubmitting}
                     >

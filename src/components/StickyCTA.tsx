@@ -60,7 +60,7 @@ const StickyCTA = () => {
               <p className="hidden font-semibold text-charcoal-800 sm:block">
                 Ready to transform your business?
               </p>
-              <Button onClick={handleCTAClick}>
+              <Button onClick={handleCTAClick} variant="primary">
                 Start My Free Consultation
               </Button>
             </div>

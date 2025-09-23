@@ -38,16 +38,16 @@ const PricingComparison = () => {
                 <th className="text-left py-4 px-6 font-semibold text-gray-900">Features</th>
                 {plans.map((plan, index) => (
                   <th key={index} className="text-center py-4 px-6">
-                    <div className={`${plan.popular ? 'bg-blue-600 text-white rounded-lg p-4' : ''}`}>
+                    <div className={`${plan.popular ? 'bg-gradient-to-r from-saffron-500 to-teal-500 text-white rounded-lg p-4' : ''}`}>
                       <div className="font-semibold text-lg">{plan.name}</div>
                       <div className={`text-2xl font-bold ${plan.popular ? 'text-white' : 'text-gray-900'}`}>
                         {plan.price}
                       </div>
-                      <div className={`text-sm ${plan.popular ? 'text-blue-100' : 'text-gray-600'}`}>
+                      <div className={`text-sm ${plan.popular ? 'text-saffron-100' : 'text-gray-600'}`}>
                         {plan.period}
                       </div>
                       {plan.popular && (
-                        <div className="text-xs mt-2 bg-blue-500 px-2 py-1 rounded">
+                        <div className="text-xs mt-2 bg-saffron-600 px-2 py-1 rounded">
                           Most Popular
                         </div>
                       )}
@@ -58,12 +58,12 @@ const PricingComparison = () => {
             </thead>
             <tbody>
               {features.map((feature, index) => (
-                <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
+                <tr key={index} className="border-b border-gray-100 transition-colors duration-300 hover:bg-saffron-50/50">
                   <td className="py-4 px-6 font-medium text-gray-900">{feature.name}</td>
                   <td className="py-4 px-6 text-center">
                     {typeof feature.starter === 'boolean' ? (
                       feature.starter ? (
-                        <Check className="w-5 h-5 text-green-500 mx-auto" />
+                        <Check className="w-5 h-5 text-teal-500 mx-auto" />
                       ) : (
                         <X className="w-5 h-5 text-red-400 mx-auto" />
                       )
@@ -74,7 +74,7 @@ const PricingComparison = () => {
                   <td className="py-4 px-6 text-center">
                     {typeof feature.professional === 'boolean' ? (
                       feature.professional ? (
-                        <Check className="w-5 h-5 text-green-500 mx-auto" />
+                        <Check className="w-5 h-5 text-teal-500 mx-auto" />
                       ) : (
                         <X className="w-5 h-5 text-red-400 mx-auto" />
                       )
@@ -85,7 +85,7 @@ const PricingComparison = () => {
                   <td className="py-4 px-6 text-center">
                     {typeof feature.enterprise === 'boolean' ? (
                       feature.enterprise ? (
-                        <Check className="w-5 h-5 text-green-500 mx-auto" />
+                        <Check className="w-5 h-5 text-teal-500 mx-auto" />
                       ) : (
                         <X className="w-5 h-5 text-red-400 mx-auto" />
                       )
@@ -100,13 +100,13 @@ const PricingComparison = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <div className="bg-gray-50 rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-saffron-50 via-white to-teal-50 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Our team is here to help you choose the right plan for your business. 
               Schedule a free consultation to discuss your specific needs.
             </p>
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            <button className="bg-gradient-to-r from-saffron-500 to-teal-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-saffron-600 hover:to-teal-600 transition-colors">
               Schedule Free Consultation
             </button>
           </div>

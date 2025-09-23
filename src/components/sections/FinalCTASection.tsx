@@ -146,7 +146,7 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
                   
                   <div className="relative z-10">
                     <div className="flex items-center justify-center space-x-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-saffron-500 to-teal-500 rounded-full flex items-center justify-center">
                         {index === 0 && <Globe className="w-6 h-6 text-white drop-shadow-lg" />}
                         {index === 1 && <Cpu className="w-6 h-6 text-white drop-shadow-lg" />}
                         {index === 2 && <BarChart3 className="w-6 h-6 text-white drop-shadow-lg" />}
@@ -236,11 +236,11 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
               ].map((feature, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-saffron-200"
+                  className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-saffron-200 hover:border-teal-300"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <CheckCircle2 className="w-4 h-4 text-saffron-500" />
+                  <CheckCircle2 className="w-4 h-4 text-teal-500" />
                   <span className="text-sm font-medium">{feature}</span>
                 </motion.div>
               ))}
