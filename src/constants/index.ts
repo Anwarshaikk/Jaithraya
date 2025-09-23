@@ -271,7 +271,7 @@ export const ABOUT_SECTION = {
     title: 'Meet Anwar - The Visionary Behind Jaithraya',
     subtitle: 'My Journey: Infosys → Masters → AI Startup',
     story: 'After gaining valuable corporate experience as a Systems Engineer at Infosys, I pursued my Masters in Data Science from University of New Haven to deepen my AI expertise. During my studies, I realized how AI could transform small businesses—the same way it had revolutionized large corporations.',
-    location: 'Based in West Haven, CT, I serve clients globally, combining corporate experience, academic knowledge, and entrepreneurial spirit to help businesses achieve their threefold victory.',
+    location: 'Based in West Haven, CT, USA, I serve clients globally, combining corporate experience, academic knowledge, and entrepreneurial spirit to help businesses achieve their threefold victory.',
     values: [
       {
         title: 'Integrity',
@@ -317,9 +317,9 @@ export const ABOUT_SECTION = {
     title: 'Ready to Achieve Your Threefold Victory?',
     subtitle: 'Discover how Jaithraya can help your business achieve its own threefold victory—connect with us today to explore the possibilities.',
     details: {
-      phone: '203-710-0790',
+      phone: '2037100790',
       email: 'anwarrashidshaik@jaithraya.com',
-      location: 'West Haven, CT (Serving Globally)'
+      location: 'West Haven, CT, USA (Serving Globally)'
     },
     cta: {
       text: 'Schedule Your Free Consultation',

@@ -7,13 +7,14 @@ import { cn } from '@/lib/utils';
 import Logo from '@/components/ui/Logo';
 import { Button } from '@/components/ui/Button';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { useConsultation } from '@/contexts/ConsultationContext';
 
 const NAV_LINKS = [
   { href: '#features', label: 'Features' },
   { href: '#process', label: 'Process' },
-  { href: '#pricing', label: 'Pricing' },
+  { href: '/pricing', label: 'Pricing' },
   { href: '#success', label: 'Success' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const NavBar = () => {
@@ -21,9 +22,13 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+  const { openModal } = useConsultation();
 
   useEffect(() => {
-    NAV_LINKS.forEach(link => {
+    // Only set up intersection observer for anchor links
+    const anchorLinks = NAV_LINKS.filter(link => link.href.startsWith('#'));
+    
+    anchorLinks.forEach(link => {
       sectionRefs.current[link.href.substring(1)] = document.getElementById(link.href.substring(1));
     });
 
@@ -98,7 +103,7 @@ const NavBar = () => {
               href={link.href}
               className={cn(
                 "text-charcoal-600 hover:text-saffron-500 transition-colors",
-                activeSection === link.href.substring(1) && "text-saffron-500 font-semibold"
+                link.href.startsWith('#') && activeSection === link.href.substring(1) && "text-saffron-500 font-semibold"
               )}
             >
               {link.label}
@@ -107,7 +112,13 @@ const NavBar = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-2">
-          <Button className="bg-teal-500 hover:bg-saffron-500">Get Free Consultation</Button>
+          <Button 
+            variant="primary" 
+            onClick={openModal}
+            className="bg-gradient-to-r from-saffron-500 to-teal-500 hover:from-saffron-600 hover:to-teal-600"
+          >
+            Get Free Consultation
+          </Button>
           <ThemeToggle />
         </div>
 
@@ -142,14 +153,19 @@ const NavBar = () => {
                 href={link.href}
                 className={cn(
                   "text-charcoal-800 hover:text-saffron-500 transition-colors",
-                  activeSection === link.href.substring(1) && "text-saffron-500 font-semibold"
+                  link.href.startsWith('#') && activeSection === link.href.substring(1) && "text-saffron-500 font-semibold"
                 )}
                 onClick={toggleMenu}
               >
                 {link.label}
               </Link>
             ))}
-            <Button size="lg" className="mt-6 bg-teal-500 hover:bg-saffron-500">
+            <Button 
+              size="lg" 
+              variant="primary"
+              onClick={openModal}
+              className="mt-6 bg-gradient-to-r from-saffron-500 to-teal-500 hover:from-saffron-600 hover:to-teal-600"
+            >
               Get Free Consultation
             </Button>
             <div className="mt-6">

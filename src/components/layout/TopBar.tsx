@@ -7,11 +7,13 @@ import { HeaderProps } from '@/types';
 import Logo from '@/components/ui/Logo';
 import { toast } from 'sonner';
 import { Linkedin, Instagram, Facebook, Phone, Mail, MapPin } from 'lucide-react';
+import { useConsultation } from '@/contexts/ConsultationContext';
 
 type NavItem = typeof NAVIGATION_ITEMS[number];
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const { phone, email, location } = ABOUT_SECTION.contact.details;
+  const { openModal } = useConsultation();
 
   const showContactInfo = () => {
     toast.info(
@@ -68,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               return (
                 <button
                   key={item.label}
-                  onClick={showContactInfo}
+                  onClick={openModal}
                   className="px-3 py-2 transition-all duration-300 hover:scale-105 bg-saffron-500 text-white rounded-full hover:bg-teal-500 hover:shadow-lg"
                 >
                   {item.label}

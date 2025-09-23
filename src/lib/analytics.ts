@@ -23,6 +23,44 @@ type AnalyticsEvent =
   | {
       name: 'cta_click';
       properties?: Record<string, any>;
+    }
+  | {
+      name: 'showcase_filter_change';
+      properties: {
+        filter_type: 'category' | 'industry' | 'tags' | 'search' | 'sort';
+        filter_value: string;
+      };
+    }
+  | {
+      name: 'showcase_card_open';
+      properties: {
+        item_slug: string;
+        item_category: string;
+        item_industry: string;
+      };
+    }
+  | {
+      name: 'showcase_view_details';
+      properties: {
+        item_slug: string;
+        item_category: string;
+        item_industry: string;
+      };
+    }
+  | {
+      name: 'showcase_quick_preview';
+      properties: {
+        item_slug: string;
+        item_category: string;
+        item_industry: string;
+      };
+    }
+  | {
+      name: 'showcase_cta_click';
+      properties: {
+        cta_type: 'consultation' | 'demo' | 'pricing';
+        item_slug?: string;
+      };
     };
 
 const logEvent = (event: AnalyticsEvent) => {

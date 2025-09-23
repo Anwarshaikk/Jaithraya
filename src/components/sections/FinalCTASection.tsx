@@ -168,9 +168,9 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
           {/* Enhanced Contact Cards */}
           <motion.div variants={itemVariants} className="grid md:grid-cols-3 gap-6 mb-16">
             {[
-              { icon: Phone, text: "203-710-0790", color: "from-teal-500 to-teal-600" },
+              { icon: Phone, text: "2037100790", color: "from-teal-500 to-teal-600" },
               { icon: Mail, text: "anwarrashidshaik@jaithraya.com", color: "from-saffron-500 to-saffron-600" },
-              { icon: MapPin, text: "West Haven, CT (Serving Globally)", color: "from-teal-500 to-saffron-500" }
+              { icon: MapPin, text: "West Haven, CT, USA (Serving Globally)", color: "from-teal-500 to-saffron-500" }
             ].map((contact, index) => (
               <motion.div
                 key={index}

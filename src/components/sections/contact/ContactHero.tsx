@@ -33,7 +33,7 @@ const ContactHero: React.FC = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      description: '203-710-0790',
+      description: '2037100790',
       action: 'Call Now'
     },
     {
@@ -45,7 +45,7 @@ const ContactHero: React.FC = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      description: 'West Haven, CT',
+      description: 'West Haven, CT, USA',
       action: 'Get Directions'
     },
     {

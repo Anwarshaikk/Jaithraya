@@ -58,11 +58,20 @@ const StickyCTA = () => {
                 </Select>
               </div>
               <p className="hidden font-semibold text-charcoal-800 sm:block">
-                Ready to transform your business?
+                Like what you see? Get a custom walkthrough.
               </p>
-              <Button onClick={handleCTAClick} variant="primary">
-                Start My Free Consultation
-              </Button>
+              <div className="flex space-x-3">
+                <Button 
+                  onClick={() => window.location.href = '/pricing'}
+                  variant="outline"
+                  className="border-teal-300 text-teal-600 hover:bg-teal-50"
+                >
+                  See Pricing
+                </Button>
+                <Button onClick={handleCTAClick} variant="primary">
+                  Schedule Free Consultation
+                </Button>
+              </div>
             </div>
           </div>
         </motion.div>

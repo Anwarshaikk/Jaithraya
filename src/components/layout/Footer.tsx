@@ -82,8 +82,8 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center text-gray-300">
                 <Phone className="h-5 w-5 mr-3 text-saffron-400" />
-                <a href="tel:203-710-0790" className="hover:text-saffron-400 transition-colors">
-                  203-710-0790
+                <a href="tel:2037100790" className="hover:text-saffron-400 transition-colors">
+                  2037100790
                 </a>
               </div>
               <div className="flex items-center text-gray-300">
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center text-gray-300">
                 <MapPin className="h-5 w-5 mr-3 text-saffron-400" />
-                <span>West Haven, CT (Serving Globally)</span>
+                <span>West Haven, CT, USA (Serving Globally)</span>
               </div>
             </div>
           </div>

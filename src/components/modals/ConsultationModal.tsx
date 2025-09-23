@@ -18,6 +18,7 @@ import { Label } from '@/components/ui/Label';
 import { toast } from 'sonner';
 import Confetti from 'react-confetti';
 import logEvent from '@/lib/analytics';
+import { Textarea } from '@/components/ui/Textarea';
 
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -161,59 +162,121 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     onSubmit={handleSubmit(handleFormSubmit)}
                     className="mt-8 space-y-6"
                   >
-                    <div>
-                      <Label htmlFor="name" className="text-base">Full Name</Label>
-                      <Input
-                        id="name"
-                        {...register('name')}
-                        placeholder="e.g., Jane Doe"
-                        aria-invalid={errors.name ? 'true' : 'false'}
-                      />
-                      {errors.name && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.name.message}
-                        </p>
-                      )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <Label htmlFor="name" className="text-base">Full Name</Label>
+                        <Input
+                          id="name"
+                          {...register('name')}
+                          placeholder="e.g., Jane Doe"
+                          aria-invalid={errors.name ? 'true' : 'false'}
+                        />
+                        {errors.name && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.name.message}
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <Label htmlFor="email" className="text-base">Email Address</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          {...register('email')}
+                          placeholder="jane.doe@example.com"
+                          aria-invalid={errors.email ? 'true' : 'false'}
+                        />
+                        {errors.email && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.email.message}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <Label htmlFor="email" className="text-base">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        {...register('email')}
-                        placeholder="jane.doe@example.com"
-                        aria-invalid={errors.email ? 'true' : 'false'}
-                      />
-                      {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.email.message}
-                        </p>
-                      )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <Label htmlFor="phone" className="text-base">Phone</Label>
+                        <Input
+                          id="phone"
+                          {...register('phone')}
+                          placeholder="e.g., 555-123-4567"
+                          aria-invalid={errors.phone ? 'true' : 'false'}
+                        />
+                        {errors.phone && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.phone.message}
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <Label htmlFor="company" className="text-base">Company</Label>
+                        <Input
+                          id="company"
+                          {...register('company')}
+                          placeholder="e.g., Acme Inc."
+                          aria-invalid={errors.company ? 'true' : 'false'}
+                        />
+                        {errors.company && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.company.message}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <Label htmlFor="companySize" className="text-base">Company Size</Label>
-                      <Select
-                        onValueChange={(value) =>
-                          setValue('companySize', value as '1-10' | '11-50' | '51-200' | '201+')
-                        }
-                        defaultValue=""
-                      >
-                        <SelectTrigger
-                          id="companySize"
-                          aria-invalid={errors.companySize ? 'true' : 'false'}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <Label htmlFor="companySize" className="text-base">Company Size</Label>
+                        <Select
+                          onValueChange={(value) =>
+                            setValue('companySize', value as '1-10' | '11-50' | '51-200' | '201+')
+                          }
+                          defaultValue=""
                         >
-                          <SelectValue placeholder="Select size..." />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1-10">1-10 employees</SelectItem>
-                          <SelectItem value="11-50">11-50 employees</SelectItem>
-                          <SelectItem value="51-200">51-200 employees</SelectItem>
-                          <SelectItem value="201+">201+ employees</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      {errors.companySize && (
+                          <SelectTrigger
+                            id="companySize"
+                            aria-invalid={errors.companySize ? 'true' : 'false'}
+                          >
+                            <SelectValue placeholder="Select size..." />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="1-10">1-10 employees</SelectItem>
+                            <SelectItem value="11-50">11-50 employees</SelectItem>
+                            <SelectItem value="51-200">51-200 employees</SelectItem>
+                            <SelectItem value="201+">201+ employees</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        {errors.companySize && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.companySize.message}
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <Label htmlFor="businessType" className="text-base">Business Type</Label>
+                        <Input
+                          id="businessType"
+                          {...register('businessType')}
+                          placeholder="e.g., Retail"
+                          aria-invalid={errors.businessType ? 'true' : 'false'}
+                        />
+                        {errors.businessType && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.businessType.message}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <Label htmlFor="currentChallenges" className="text-base">Current Challenges</Label>
+                      <Textarea
+                        id="currentChallenges"
+                        {...register('currentChallenges')}
+                        placeholder="Describe your current business challenges"
+                        aria-invalid={errors.currentChallenges ? 'true' : 'false'}
+                      />
+                      {errors.currentChallenges && (
                         <p className="mt-1 text-sm text-red-600">
-                          {errors.companySize.message}
+                          {errors.currentChallenges.message}
                         </p>
                       )}
                     </div>

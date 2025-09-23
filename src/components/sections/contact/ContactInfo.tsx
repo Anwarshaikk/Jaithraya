@@ -6,19 +6,19 @@ const ContactInfo = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
+      details: ['2037100790'],
       description: 'Call us for immediate assistance'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['hello@jaithraya.com', 'support@jaithraya.com'],
+      details: ['anwarrashidshaik@jaithraya.com'],
       description: 'Send us an email anytime'
     },
     {
       icon: MapPin,
       title: 'Office',
-      details: ['123 Business Ave', 'Suite 100', 'New York, NY 10001'],
+      details: ['West Haven, CT, USA'],
       description: 'Visit our headquarters'
     },
     {

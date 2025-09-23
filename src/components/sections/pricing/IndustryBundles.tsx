@@ -1,7 +1,10 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { Check, Star } from 'lucide-react';
+import CustomSolutionForm from '@/components/forms/CustomSolutionForm';
 
 const IndustryBundles = () => {
+  const [showForm, setShowForm] = useState(false);
   const bundles = [
     {
       industry: "Retail & E-commerce",
@@ -136,17 +139,39 @@ const IndustryBundles = () => {
           ))}
         </div>
         
-        <div className="mt-12 text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Don't See Your Industry?</h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              We work with businesses across all industries. Our team can create a custom 
-              marketing strategy tailored specifically to your industry's unique challenges and opportunities.
-            </p>
-            <button className="bg-gradient-to-r from-saffron-500 to-teal-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-saffron-600 hover:to-teal-600 transition-colors">
-              Discuss Custom Solution
-            </button>
-          </div>
+        <div className="mt-12">
+          {!showForm ? (
+            <div className="text-center">
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Don't See Your Industry?</h3>
+                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                  We work with businesses across all industries. Our team can create a custom 
+                  marketing strategy tailored specifically to your industry's unique challenges and opportunities.
+                </p>
+                <button 
+                  onClick={() => setShowForm(true)}
+                  className="bg-gradient-to-r from-saffron-500 to-teal-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-saffron-600 hover:to-teal-600 transition-colors"
+                >
+                  Get Your Custom Solution
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="max-w-4xl mx-auto">
+              <CustomSolutionForm 
+                onSuccess={() => setShowForm(false)}
+                className="border-2 border-saffron-200"
+              />
+              <div className="text-center mt-6">
+                <button 
+                  onClick={() => setShowForm(false)}
+                  className="text-gray-500 hover:text-gray-700 text-sm underline"
+                >
+                  ← Back to industry bundles
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
