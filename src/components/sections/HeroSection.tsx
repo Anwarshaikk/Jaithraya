@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useConsultation } from '@/contexts/ConsultationContext';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 
 interface HeroSectionProps {
   className?: string;
@@ -36,7 +36,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
   };
 
   return (
-    <section className={cn('relative bg-gradient-to-br from-saffron-50 via-saffron-100 to-orange-200 overflow-hidden', className)}>
+    <section className={cn('relative bg-gradient-to-br from-saffron-50 via-saffron-100 to-teal-200 overflow-hidden', className)}>
       {/* Background Pattern */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -84,9 +84,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
           <motion.div variants={itemVariants} className="mt-8">
             <Button
               onClick={openModal}
-              variant="primary"
+              variant="default"
               size="lg"
-              className="group bg-saffron-500 hover:bg-teal-500"
+              className="group bg-teal-500 hover:bg-saffron-500"
             >
               Get Free Consultation
               <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />

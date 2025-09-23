@@ -4,7 +4,7 @@ import { motion, Variants } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { PROCESS_SECTION } from '@/constants';
 import ProcessCard from './ProcessCard';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 
 interface ProcessSectionProps {
   className?: string;

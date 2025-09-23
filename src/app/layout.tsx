@@ -1,17 +1,25 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { APP_CONFIG } from "@/constants";
 import { ConsultationProvider } from "@/contexts/ConsultationContext";
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Toaster } from "sonner";
 import ConsultationWrapper from "@/components/ConsultationWrapper";
+import StickyCTA from "@/components/StickyCTA";
+import { ThemeProvider } from '@/components/ThemeProvider';
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({ 
+  subsets: ["latin"], 
+  variable: "--font-inter",
+  display: 'swap',
+});
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
+  display: 'swap',
 });
 
 export const metadata = {
@@ -32,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" />
@@ -41,15 +49,24 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-        <AuthProvider>
-          <ConsultationProvider>
-            <Header />
-            <main className="py-12">{children}</main>
-            <Toaster />
-            <ConsultationWrapper />
-          </ConsultationProvider>
-        </AuthProvider>
+      <body className={`${inter.variable} ${poppins.variable} font-sans bg-wash text-charcoal-800`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <ConsultationProvider>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+              <Toaster />
+              <ConsultationWrapper />
+              <StickyCTA />
+            </ConsultationProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

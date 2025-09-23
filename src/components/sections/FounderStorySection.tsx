@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { ABOUT_SECTION } from '@/constants';
-import Accordion from '@/components/ui/Accordion';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/Accordion';
 import { motion } from 'framer-motion';
 
 const itemVariants = {

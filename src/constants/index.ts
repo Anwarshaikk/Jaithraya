@@ -7,8 +7,33 @@ export const APP_CONFIG = {
 } as const;
 
 export const NAVIGATION_ITEMS = [
-  { label: 'Solutions', href: '/#solutions', isButton: false },
+  { 
+    label: 'Solutions', 
+    href: '/#solutions', 
+    isButton: false,
+    hasDropdown: true,
+    dropdownItems: [
+      { label: 'Professional Services', href: '/solutions/professional-services' },
+      { label: 'Retail & Specialty', href: '/solutions/retail-specialty' },
+      { label: 'Food & Hospitality', href: '/solutions/food-hospitality' },
+      { label: 'Lifestyle & Events', href: '/solutions/lifestyle-events' },
+    ]
+  },
+  { 
+    label: 'Services', 
+    href: '/services', 
+    isButton: false,
+    hasDropdown: true,
+    dropdownItems: [
+      { label: 'Digital Presence', href: '/services/digital-presence' },
+      { label: 'Operations Automation', href: '/services/automation' },
+      { label: 'Customer Engagement', href: '/services/engagement' },
+      { label: 'Analytics & AI', href: '/services/analytics' },
+    ]
+  },
   { label: 'About', href: '/about', isButton: false },
+  { label: 'Pricing', href: '/pricing', isButton: false },
+  { label: 'Blog', href: '/blog', isButton: false },
   { label: 'Our Process', href: '/#process', isButton: false },
   { label: 'Contact Us', href: '/contact', isButton: true },
 ] as const;
