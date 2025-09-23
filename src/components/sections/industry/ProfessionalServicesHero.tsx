@@ -1,99 +1,39 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Star, Briefcase, RefreshCw } from 'lucide-react';
-import { useConsultation } from '@/contexts/ConsultationContext';
 import { Button } from '@/components/ui/Button';
-import logEvent from '@/lib/analytics';
+import { ArrowRight, Briefcase, Zap, BarChart3 } from 'lucide-react';
+import { useConsultation } from '@/contexts/ConsultationContext';
 
-const ProfessionalServicesHero: React.FC = () => {
+const ProfessionalServicesHero = () => {
   const { openModal } = useConsultation();
 
-  const handleCTAClick = () => {
-    logEvent({ name: 'hero_cta_click' });
-    openModal();
-  };
-
-  const scrollToProcess = () => {
-    document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 100,
-        damping: 12,
-      },
-    },
-  };
-
   return (
-    <section className="relative bg-gradient-to-br from-teal-50 via-white to-saffron-50 py-24 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
-      <div className="container mx-auto px-6 text-center relative z-10">
+    <section className="relative bg-gradient-to-br from-teal-50 via-blue-50 to-purple-50 overflow-hidden">
+      <div className="absolute inset-0 bg-[url('/path-to-your-abstract-bg.svg')] opacity-5"></div>
+      <div className="container mx-auto px-6 py-24 text-center relative z-10">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl font-bold tracking-tight text-charcoal-900 sm:text-6xl md:text-7xl"
+          <div className="inline-block bg-white rounded-full p-3 mb-6 shadow-md">
+            <Briefcase className="w-8 h-8 text-teal-500" />
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-charcoal-900 mb-6">
+            AI-Powered Solutions for Professional Services
+          </h1>
+          <p className="text-lg text-charcoal-700 max-w-3xl mx-auto mb-8">
+            Streamline your operations, elevate your client experience, and unlock new growth opportunities with our tailored automation and AI solutions.
+          </p>
+          <Button
+            onClick={openModal}
+            size="lg"
+            className="group bg-teal-500 hover:bg-saffron-500"
           >
-            Your Service Business, Perfected.
-          </motion.h1>
-
-          <motion.p
-            variants={itemVariants}
-            className="mt-6 max-w-2xl text-lg md:text-xl text-charcoal-600 leading-relaxed"
-          >
-            Book faster. Get paid sooner. See performance clearly. Our AI tools handle the busywork, so you can focus on your craft.
-          </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Button onClick={handleCTAClick} size="lg" className="w-full sm:w-auto">
-              Start My Free Consultation
-            </Button>
-            <Button onClick={scrollToProcess} variant="ghost" size="lg" className="w-full sm:w-auto">
-              See How It Works <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 text-charcoal-600"
-          >
-            <div className="flex items-center gap-2">
-              <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-              <span className="font-medium">4.9/5 Rating</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Briefcase className="w-5 h-5 text-teal-500" />
-              <span className="font-medium">10+ Industries Served</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <RefreshCw className="w-5 h-5 text-saffron-500" />
-              <span className="font-medium">95% Customer Retention</span>
-            </div>
-          </motion.div>
+            Get Your Free Consultation
+            <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
+          </Button>
         </motion.div>
       </div>
     </section>

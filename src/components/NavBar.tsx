@@ -2,19 +2,21 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/ui/Logo';
 import { Button } from '@/components/ui/Button';
 import { useConsultation } from '@/contexts/ConsultationContext';
-
-const NAV_LINKS = [
-  { href: '#features', label: 'Features' },
-  { href: '#process', label: 'Process' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '#success', label: 'Success' },
-  { href: '/contact', label: 'Contact' },
-];
+import { NAVIGATION_ITEMS } from '@/constants';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/NavigationMenu";
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,17 +60,41 @@ const NavBar = () => {
           <Logo size="sm" />
         </Link>
         
-        <nav className="hidden md:flex items-center space-x-6">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-charcoal-600 hover:text-saffron-500 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList>
+            {NAVIGATION_ITEMS.map((item) => {
+              if (item.hasDropdown) {
+                return (
+                  <NavigationMenuItem key={item.label}>
+                    <NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                        {item.dropdownItems?.map((component) => (
+                          <ListItem
+                            key={component.label}
+                            title={component.label}
+                            href={component.href}
+                          >
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                );
+              }
+              if (item.isButton) return null;
+              return (
+                <NavigationMenuItem key={item.label}>
+                  <Link href={item.href} legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                      {item.label}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              );
+            })}
+          </NavigationMenuList>
+        </NavigationMenu>
 
         <div className="hidden md:flex items-center gap-2">
           <Button 
@@ -105,9 +131,9 @@ const NavBar = () => {
             </button>
           </div>
           <nav className="flex flex-col space-y-6 text-xl">
-            {NAV_LINKS.map((link) => (
+            {NAVIGATION_ITEMS.map((link) => (
               <Link
-                key={link.href}
+                key={link.label}
                 href={link.href}
                 className="text-charcoal-800 hover:text-saffron-500 transition-colors"
                 onClick={toggleMenu}
@@ -129,5 +155,31 @@ const NavBar = () => {
     </header>
   );
 };
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"
 
 export default NavBar;
