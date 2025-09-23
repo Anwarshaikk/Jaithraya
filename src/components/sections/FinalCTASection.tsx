@@ -146,7 +146,7 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ className }) => {
                   
                   <div className="relative z-10">
                     <div className="flex items-center justify-center space-x-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-saffron-500 to-teal-500 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full flex items-center justify-center">
                         {index === 0 && <Globe className="w-6 h-6 text-white drop-shadow-lg" />}
                         {index === 1 && <Cpu className="w-6 h-6 text-white drop-shadow-lg" />}
                         {index === 2 && <BarChart3 className="w-6 h-6 text-white drop-shadow-lg" />}
