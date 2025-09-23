@@ -1,11 +1,23 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, LucideProps } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { useConsultation } from '@/contexts/ConsultationContext';
 
-const ProcessStep = ({ step, index }) => {
+interface Step {
+  icon: React.ComponentType<LucideProps>;
+  title: string;
+  description: string[];
+  whatYouGet: string[];
+}
+
+interface ProcessStepProps {
+  step: Step;
+  index: number;
+}
+
+const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
   const { openModal } = useConsultation();
 
   return (

@@ -1,14 +1,10 @@
 import { ImageResponse } from 'next/og';
-import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
-export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-
-  const title = searchParams.get('title') || 'Transform Your Service Business';
+export default async function Image() {
+  const title = 'Transform Your Service Business';
   const subline =
-    searchParams.get('subline') ||
     'AI-powered solutions for appointment-based and service-oriented businesses.';
 
   return new ImageResponse(

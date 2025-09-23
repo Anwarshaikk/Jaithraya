@@ -8,6 +8,8 @@ import Logo from '@/components/ui/Logo';
 import { toast } from 'sonner';
 import { Linkedin, Instagram, Facebook, Phone, Mail, MapPin } from 'lucide-react';
 
+type NavItem = typeof NAVIGATION_ITEMS[number];
+
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const { phone, email, location } = ABOUT_SECTION.contact.details;
 
@@ -61,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-1">
-          {NAVIGATION_ITEMS.map((item) => {
+          {NAVIGATION_ITEMS.map((item: NavItem) => {
             if (item.isButton) {
               return (
                 <button
@@ -74,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               );
             }
             
-            if (item.hasDropdown) {
+            if ('hasDropdown' in item && item.hasDropdown) {
               return (
                 <div key={item.label} className="relative group">
                   <Link

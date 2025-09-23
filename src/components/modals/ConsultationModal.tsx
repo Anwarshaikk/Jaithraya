@@ -22,7 +22,15 @@ import logEvent from '@/lib/analytics';
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
+  phone: z.string().min(10, 'Please enter a valid phone number'),
+  company: z.string().min(2, 'Company name must be at least 2 characters'),
   companySize: z.enum(['1-10', '11-50', '51-200', '201+']),
+  businessType: z.string().min(2, 'Please specify your business type'),
+  currentChallenges: z.string().min(10, 'Please describe your challenges'),
+  budget: z.string().optional(),
+  timeline: z.string().optional(),
+  preferredContact: z.string().optional(),
+  additionalInfo: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -31,7 +39,7 @@ interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
   // Mock submission
-  onSubmit: (data: FormData) => Promise<{ success: true }>;
+  onSubmit: (data: FormData) => Promise<void>;
 }
 
 const ConsultationModal: React.FC<ConsultationModalProps> = ({
@@ -53,6 +61,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
     register,
     handleSubmit,
     control,
+    setValue,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<FormData>({
@@ -185,7 +194,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({
                       <Label htmlFor="companySize" className="text-base">Company Size</Label>
                       <Select
                         onValueChange={(value) =>
-                          control.setValue('companySize', value)
+                          setValue('companySize', value as '1-10' | '11-50' | '51-200' | '201+')
                         }
                         defaultValue=""
                       >

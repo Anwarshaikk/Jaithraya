@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import PricingCard from './PricingCard';
 import PricingToggle from './PricingToggle';
+import { Plan } from '@/lib/types';
 
 const PRICING_PLANS = [
   {
@@ -59,7 +60,7 @@ const PRICING_PLANS = [
     ],
     isPopular: false,
   },
-];
+] as const satisfies ReadonlyArray<Plan>;
 
 const PricingSection = () => {
   const [isAnnual, setIsAnnual] = useState(false);

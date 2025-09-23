@@ -3,7 +3,12 @@ import React from 'react';
 import { Switch } from '@/components/ui/Switch';
 import { Label } from '@/components/ui/Label';
 
-const PricingToggle = ({ isAnnual, setIsAnnual }) => {
+interface PricingToggleProps {
+  isAnnual: boolean;
+  setIsAnnual: (checked: boolean) => void;
+}
+
+const PricingToggle: React.FC<PricingToggleProps> = ({ isAnnual, setIsAnnual }) => {
   return (
     <div className="flex items-center justify-center space-x-4">
       <Label htmlFor="pricing-toggle" className="text-charcoal-600">

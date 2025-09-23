@@ -5,8 +5,6 @@ import { Resend } from 'resend';
 import ProspectConfirmation from '@/emails/ProspectConfirmation';
 import InternalNotification from '@/emails/InternalNotification';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   if (!dbAdmin) {
     return NextResponse.json(
@@ -56,25 +54,32 @@ export async function POST(request: NextRequest) {
       console.log('INTERNAL_NOTIFICATION_EMAIL:', process.env.INTERNAL_NOTIFICATION_EMAIL);
       console.log('RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
 
-      // Email to Prospect
-      const prospectEmailResult = await resend.emails.send({
-        from: process.env.FROM_EMAIL!,
-        to: data.email,
-        subject: 'Thank You for Your Consultation Request',
-        react: ProspectConfirmation({ name: data.name }),
-      });
-      console.log('Prospect email sent:', prospectEmailResult);
+      // Initialize Resend only when needed
+      if (!process.env.RESEND_API_KEY) {
+        console.warn('RESEND_API_KEY not found, skipping email sending');
+      } else {
+        const resend = new Resend(process.env.RESEND_API_KEY);
 
-      // Email to Internal Team
-      const internalEmailResult = await resend.emails.send({
-        from: process.env.FROM_EMAIL!,
-        to: process.env.INTERNAL_NOTIFICATION_EMAIL!,
-        subject: 'New Consultation Form Submission',
-        react: InternalNotification(data),
-      });
-      console.log('Internal email sent:', internalEmailResult);
+        // Email to Prospect
+        const prospectEmailResult = await resend.emails.send({
+          from: process.env.FROM_EMAIL!,
+          to: data.email,
+          subject: 'Thank You for Your Consultation Request',
+          react: ProspectConfirmation({ name: data.name }),
+        });
+        console.log('Prospect email sent:', prospectEmailResult);
 
-      console.log('Confirmation and notification emails sent successfully.');
+        // Email to Internal Team
+        const internalEmailResult = await resend.emails.send({
+          from: process.env.FROM_EMAIL!,
+          to: process.env.INTERNAL_NOTIFICATION_EMAIL!,
+          subject: 'New Consultation Form Submission',
+          react: InternalNotification(data),
+        });
+        console.log('Internal email sent:', internalEmailResult);
+
+        console.log('Confirmation and notification emails sent successfully.');
+      }
     } catch (emailError) {
       console.error('Error sending emails:', emailError);
       console.error('Email error details:', JSON.stringify(emailError, null, 2));

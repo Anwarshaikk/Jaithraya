@@ -49,7 +49,9 @@ const CLUSTERS = [
   },
 ];
 
-const FeatureCard = ({ cluster }) => (
+type Cluster = typeof CLUSTERS[number];
+
+const FeatureCard: React.FC<{ cluster: Cluster }> = ({ cluster }) => (
   <motion.div
     whileHover={{ y: -5, boxShadow: 'var(--tw-shadow-elevated)' }}
     className="bg-white rounded-xl p-8 border border-transparent hover:border-teal-200 transition-all duration-300 shadow-soft h-full"

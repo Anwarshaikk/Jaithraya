@@ -38,14 +38,15 @@ const NavBar = () => {
       { rootMargin: '-50% 0px -50% 0px' }
     );
 
-    Object.values(sectionRefs.current).forEach(section => {
+    const sections = Object.values(sectionRefs.current);
+    sections.forEach(section => {
       if (section) {
         observer.observe(section);
       }
     });
 
     return () => {
-      Object.values(sectionRefs.current).forEach(section => {
+      sections.forEach(section => {
         if (section) {
           observer.unobserve(section);
         }

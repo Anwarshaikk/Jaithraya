@@ -10,8 +10,14 @@ import {
   CollapsibleTrigger,
 } from '@/components/ui/Collapsible'; 
 import logEvent from '@/lib/analytics';
+import { Plan } from '@/lib/types';
 
-const PricingCard = ({ plan, isAnnual }) => {
+interface PricingCardProps {
+    plan: Plan;
+    isAnnual: boolean;
+}
+
+const PricingCard: React.FC<PricingCardProps> = ({ plan, isAnnual }) => {
   const price = isAnnual ? plan.price.annual : plan.price.monthly;
   const priceSuffix = isAnnual ? '/year' : '/month';
 
@@ -47,11 +53,13 @@ const PricingCard = ({ plan, isAnnual }) => {
 
       <div className="mt-6">
         <span className="text-5xl font-bold tracking-tight text-charcoal-900">
-          ${price}
+          {typeof price === 'number' ? `$${price}` : price}
         </span>
-        <span className="ml-1 text-lg font-medium text-charcoal-500">
-          {priceSuffix}
-        </span>
+        {typeof price === 'number' &&
+            <span className="ml-1 text-lg font-medium text-charcoal-500">
+                {priceSuffix}
+            </span>
+        }
       </div>
 
       <p className="mt-2 text-sm text-charcoal-500">{plan.price.note}</p>

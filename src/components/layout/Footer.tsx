@@ -10,7 +10,7 @@ import { APP_CONFIG, NAVIGATION_ITEMS } from '@/constants';
 
 const Footer: React.FC = () => {
   const pathname = usePathname();
-  const { name, social } = APP_CONFIG;
+  const { name } = APP_CONFIG;
   const currentYear = new Date().getFullYear();
 
   // Hide footer on admin pages

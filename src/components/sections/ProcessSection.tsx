@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { PROCESS_SECTION } from '@/constants';
 import ProcessCard from './ProcessCard';
 import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
 
 interface ProcessSectionProps {
   className?: string;
@@ -53,13 +54,14 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ className }) => {
         </motion.div>
 
         <div className="text-center mt-12">
-          <Button 
-            href="/contact" 
-            variant="primary"
-            className="bg-saffron-500 hover:bg-teal-500"
-          >
-            Schedule Your Free Consultation
-          </Button>
+          <Link href="/contact">
+            <Button 
+              variant="primary"
+              className="bg-saffron-500 hover:bg-teal-500"
+            >
+              Schedule Your Free Consultation
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

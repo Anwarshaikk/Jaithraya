@@ -19,6 +19,10 @@ type AnalyticsEvent =
   | {
       name: 'sticky_cta_click';
       properties?: Record<string, any>;
+    }
+  | {
+      name: 'cta_click';
+      properties?: Record<string, any>;
     };
 
 const logEvent = (event: AnalyticsEvent) => {

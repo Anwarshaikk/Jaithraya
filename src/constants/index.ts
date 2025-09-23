@@ -4,6 +4,7 @@ export const APP_CONFIG = {
   name: 'Jaithraya',
   tagline: 'AI-Powered Business Solutions',
   description: 'Transform Your Business with AI',
+  url: 'https://jaithraya.ai',
 } as const;
 
 export const NAVIGATION_ITEMS = [

@@ -52,7 +52,18 @@ const FounderStorySection = () => {
         </p>
       </motion.div>
       <motion.div variants={itemVariants} className="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-saffron-100">
-        <Accordion items={accordionItems} />
+        <Accordion type="single" collapsible className="w-full">
+          {accordionItems.map((item, index) => (
+            <AccordionItem value={`item-${index}`} key={item.title}>
+              <AccordionTrigger className="text-lg font-semibold text-charcoal-800 hover:text-saffron-600">
+                {item.title}
+              </AccordionTrigger>
+              <AccordionContent className="text-base text-charcoal-700 space-y-4">
+                {item.content}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </motion.div>
     </motion.div>
   );

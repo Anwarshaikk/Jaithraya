@@ -1,14 +1,18 @@
 'use client';
-import React from 'react';
-import { Button as BaseButton } from '@/components/ui/Button';
+import React, { ReactNode } from 'react';
+import { Button as BaseButton, ButtonProps } from '@/components/ui/Button';
 import { useABTest, getCTAText } from '@/hooks/useABTest';
 import logEvent from '@/lib/analytics';
 
-const CTAButton = ({ children, ...props }) => {
+interface CTAButtonProps extends ButtonProps {
+  children?: ReactNode;
+}
+
+const CTAButton: React.FC<CTAButtonProps> = ({ children, ...props }) => {
   const variant = useABTest('main_cta');
   const text = getCTAText(variant);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     logEvent({
       name: 'cta_click',
       properties: {
@@ -18,7 +22,7 @@ const CTAButton = ({ children, ...props }) => {
     });
     // Assuming the button's onClick is passed via props
     if (props.onClick) {
-      props.onClick();
+      props.onClick(e);
     }
   };
 
