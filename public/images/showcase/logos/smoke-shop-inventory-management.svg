@@ -1,0 +1,17 @@
+<svg width="400" height="225" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="225" rx="12" fill="url(#paint0_linear_1_7)"/>
+<rect x="20" y="20" width="360" height="185" rx="8" fill="white" fill-opacity="0.1"/>
+<path d="M120 160V100C120 88.9543 128.954 80 140 80H260C271.046 80 280 88.9543 280 100V160H120Z" fill="#4B5563"/>
+<path d="M150 70V80H250V70C250 64.4772 245.523 60 240 60H160C154.477 60 150 64.4772 150 70Z" fill="#374151"/>
+<path d="M180 110C174.477 110 170 114.477 170 120V140H190V120C190 114.477 185.523 110 180 110Z" fill="#9CA3AF"/>
+<path d="M220 110C214.477 110 210 114.477 210 120V130H230V120C230 114.477 225.523 110 220 110Z" fill="#9CA3AF"/>
+<foreignObject x="40" y="40" width="320" height="40">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: white; text-align: center;">Smoke Shop Inventory Management</div>
+</foreignObject>
+<defs>
+<linearGradient id="paint0_linear_1_7" x1="0" y1="0" x2="400" y2="225" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4B5563"/>
+<stop offset="1" stop-color="#1F2937"/>
+</linearGradient>
+</defs>
+</svg>

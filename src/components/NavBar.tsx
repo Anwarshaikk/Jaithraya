@@ -63,7 +63,7 @@ const NavBar = () => {
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             {NAVIGATION_ITEMS.map((item) => {
-              if (item.hasDropdown) {
+              if ('hasDropdown' in item && item.hasDropdown) {
                 return (
                   <NavigationMenuItem key={item.label}>
                     <NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>

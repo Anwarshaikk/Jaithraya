@@ -1,0 +1,26 @@
+<svg width="400" height="225" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="225" rx="12" fill="url(#paint0_linear_1_6)"/>
+<rect x="20" y="20" width="360" height="185" rx="8" fill="white" fill-opacity="0.1"/>
+
+<rect x="60" y="90" width="80" height="60" rx="8" fill="#93C5FD"/>
+<foreignObject x="70" y="105" width="60" height="30">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: white; text-align: center;">POS</div>
+</foreignObject>
+
+<path d="M150 120L190 120L190 110L210 125L190 140L190 130L150 130L150 120Z" fill="white"/>
+
+<rect x="220" y="90" width="120" height="60" rx="8" fill="#3B82F6"/>
+<foreignObject x="230" y="105" width="100" height="30">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: white; text-align: center;">Data<br/>Warehouse</div>
+</foreignObject>
+
+<foreignObject x="40" y="40" width="320" height="40">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: white; text-align: center;">POS → Data Warehouse Automation</div>
+</foreignObject>
+<defs>
+<linearGradient id="paint0_linear_1_6" x1="0" y1="0" x2="400" y2="225" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60A5FA"/>
+<stop offset="1" stop-color="#2563EB"/>
+</linearGradient>
+</defs>
+</svg>

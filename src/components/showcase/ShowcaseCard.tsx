@@ -40,7 +40,11 @@ export function ShowcaseCard({ item, viewMode, onQuickPreview }: ShowcaseCardPro
         item_industry: item.industry
       }
     });
-    onQuickPreview();
+    if (item.quickPreviewUrl) {
+      window.open(item.quickPreviewUrl, '_blank');
+    } else {
+      onQuickPreview();
+    }
   };
 
   if (viewMode === 'list') {

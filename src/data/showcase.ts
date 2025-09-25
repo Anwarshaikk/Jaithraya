@@ -16,6 +16,7 @@ export type ShowcaseItem = {
   media: Media[];                    // gallery
   techStack?: string[];
   demo?: { url?: string; creds?: { user?: string; pass?: string } };
+  quickPreviewUrl?: string;
   tags: string[];
   published: boolean;
 };
@@ -50,7 +51,7 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       'Custom KPI dashboards'
     ],
     media: [
-      { type: 'image', src: '/images/showcase/retail-dashboard-1.svg', alt: 'Retail dashboard main view' },
+      { type: 'image', src: '/images/showcase/logos/retail-dashboard.svg', alt: 'Retail dashboard main view' },
       { type: 'image', src: '/images/showcase/retail-dashboard-2.svg', alt: 'Inventory analytics view' },
       { type: 'iframe', src: '/demos/retail-dashboard', alt: 'Interactive retail dashboard demo' }
     ],
@@ -59,6 +60,7 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       url: '/demos/retail-dashboard',
       creds: { user: 'demo@jaithraya.com', pass: 'demo123' }
     },
+    quickPreviewUrl: '/demos/retail-dashboard',
     tags: ['analytics', 'inventory', 'payments', 'dashboard', 'retail'],
     published: true
   },
@@ -91,13 +93,14 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       'Mobile-responsive design'
     ],
     media: [
-      { type: 'image', src: '/images/showcase/cleaning-website-landing.svg', alt: 'Cleaning services landing page' },
+      { type: 'image', src: '/images/showcase/logos/cleaning-services-booking.svg', alt: 'Cleaning services landing page' },
       { type: 'image', src: '/images/showcase/cleaning-booking-flow.svg', alt: 'Booking flow interface' }
     ],
     techStack: ['Next.js', 'TypeScript', 'Stripe', 'Twilio', 'Google Maps API'],
     demo: {
       url: 'https://demo-cleaning.jaithraya.com'
     },
+    quickPreviewUrl: '/demos/cleaning-services-booking',
     tags: ['booking', 'scheduling', 'payments', 'sms', 'reviews'],
     published: true
   },
@@ -130,13 +133,14 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       'Mobile app integration'
     ],
     media: [
-      { type: 'image', src: '/images/showcase/restaurant-online-ordering.svg', alt: 'Restaurant ordering interface' },
+      { type: 'image', src: '/images/showcase/logos/restaurant-online-ordering.svg', alt: 'Restaurant ordering interface' },
       { type: 'image', src: '/images/showcase/restaurant-kds.svg', alt: 'Kitchen display system' }
     ],
     techStack: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Stripe'],
     demo: {
       url: 'https://demo-restaurant.jaithraya.com'
     },
+    quickPreviewUrl: '/demos/restaurant-online-ordering',
     tags: ['ordering', 'menu', 'kitchen', 'delivery', 'analytics'],
     published: true
   },
@@ -169,13 +173,14 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       'Financial reporting suite'
     ],
     media: [
-      { type: 'image', src: '/images/showcase/pro-services-crm.svg', alt: 'Professional services CRM dashboard' }
+      { type: 'image', src: '/images/showcase/logos/professional-services-crm.svg', alt: 'Professional services CRM dashboard' }
     ],
     techStack: ['Vue.js', 'Laravel', 'MySQL', 'Stripe', 'AWS'],
     demo: {
       url: '/demos/professional-crm',
       creds: { user: 'demo@jaithraya.com', pass: 'demo123' }
     },
+    quickPreviewUrl: '/demos/professional-services-crm',
     tags: ['crm', 'billing', 'pipeline', 'automation', 'professional'],
     published: true
   },
@@ -208,12 +213,13 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       'Error handling and logging'
     ],
     media: [
-      { type: 'image', src: '/images/showcase/pos-integration-automation.svg', alt: 'POS data automation pipeline' }
+      { type: 'image', src: '/images/showcase/logos/pos-data-warehouse-automation.svg', alt: 'POS data automation pipeline' }
     ],
     techStack: ['Python', 'Apache Airflow', 'PostgreSQL', 'Looker Studio', 'AWS'],
     demo: {
       url: '/demos/pos-automation'
     },
+    quickPreviewUrl: '/demos/pos-data-warehouse-automation',
     tags: ['automation', 'etl', 'analytics', 'reporting', 'integration'],
     published: true
   },
@@ -246,12 +252,13 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       'Regulatory updates'
     ],
     media: [
-      { type: 'image', src: '/images/showcase/smoke-shop-inventory.svg', alt: 'Smoke shop inventory dashboard' }
+      { type: 'image', src: '/images/showcase/logos/smoke-shop-inventory-management.svg', alt: 'Smoke shop inventory dashboard' }
     ],
     techStack: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Compliance APIs'],
     demo: {
       url: '/demos/smoke-shop-inventory'
     },
+    quickPreviewUrl: '/demos/smoke-shop-inventory-management',
     tags: ['inventory', 'compliance', 'tax', 'verification', 'specialized'],
     published: true
   },
@@ -284,12 +291,13 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       'Voice and text support'
     ],
     media: [
-      { type: 'image', src: '/images/showcase/ai-chatbot-interface.svg', alt: 'AI chatbot interface' }
+      { type: 'image', src: '/images/showcase/logos/ai-customer-service-chatbot.svg', alt: 'AI chatbot interface' }
     ],
     techStack: ['OpenAI GPT', 'Node.js', 'WebSocket', 'MongoDB', 'Redis'],
     demo: {
       url: '/demos/ai-chatbot'
     },
+    quickPreviewUrl: '/demos/ai-customer-service-chatbot',
     tags: ['ai', 'chatbot', 'automation', 'customer-service', 'nlp'],
     published: true
   },
@@ -322,12 +330,13 @@ export const SHOWCASE_ITEMS: ReadonlyArray<ShowcaseItem> = [
       'Scalable infrastructure'
     ],
     media: [
-      { type: 'image', src: '/images/showcase/integration-hub.svg', alt: 'Integration hub dashboard' }
+      { type: 'image', src: '/images/showcase/logos/multi-platform-integration.svg', alt: 'Integration hub dashboard' }
     ],
     techStack: ['Node.js', 'Docker', 'Kubernetes', 'PostgreSQL', 'Redis'],
     demo: {
       url: '/demos/integration-hub'
     },
+    quickPreviewUrl: '/demos/multi-platform-integration',
     tags: ['integration', 'automation', 'api', 'workflow', 'scalable'],
     published: true
   }

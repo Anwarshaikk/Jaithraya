@@ -1,0 +1,18 @@
+<svg width="400" height="225" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="225" rx="12" fill="url(#paint0_linear_1_8)"/>
+<rect x="20" y="20" width="360" height="185" rx="8" fill="white" fill-opacity="0.1"/>
+<path d="M100 100C100 88.9543 108.954 80 120 80H280C291.046 80 300 88.9543 300 100V150H120C108.954 150 100 141.046 100 130V100Z" fill="#F3E8FF"/>
+<path d="M110 160L130 150H180L170 160H110Z" fill="#E9D5FF"/>
+<circle cx="140" cy="115" r="10" fill="#A855F7"/>
+<circle cx="180" cy="115" r="10" fill="#9333EA"/>
+<circle cx="220" cy="115" r="10" fill="#7E22CE"/>
+<foreignObject x="40" y="40" width="320" height="40">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: white; text-align: center;">AI Customer Service Chatbot</div>
+</foreignObject>
+<defs>
+<linearGradient id="paint0_linear_1_8" x1="0" y1="0" x2="400" y2="225" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C084FC"/>
+<stop offset="1" stop-color="#9333EA"/>
+</linearGradient>
+</defs>
+</svg>
